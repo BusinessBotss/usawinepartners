@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wine Partnership Proposal — A Curated Selection</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1e1a16;
+  --cream: #f7f3ec;
+  --warm-white: #fdfaf5;
+  --parchment: #ede6d8;
+  --burgundy: #6b2d3e;
+  --burgundy-pale: rgba(107,45,62,0.06);
+  --gold: #b8965a;
+  --gold-muted: #c9a96e;
+  --stone: #8e857a;
+  --clay: #d4a882;
+  --olive: #5a6b4a;
+  --olive-muted: #7a8c6a;
+  --sand: #ddd5c5;
+  --terracotta: #b86f4e;
+  --ruby: #9b1b30;
+  --rose: #d4a5a5;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.lang-switcher {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  z-index: 10002;
+  display: flex;
+  gap: 2px;
+  background: rgba(30,26,22,0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 6px;
+  border: 1px solid rgba(201,169,110,0.18);
+  border-radius: 2px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: rgba(247,243,236,0.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  border-radius: 1px;
+}
+
+.lang-btn:hover { color: var(--gold-muted); }
+.lang-btn.active {
+  color: var(--ink);
+  background: var(--gold-muted);
+}
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--burgundy), var(--gold), var(--olive));
+  z-index: 10001;
+  width: 0;
+}
+
+/* ── COVER ── */
+.cover {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.cover-bg {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cover-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+}
+
+.cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(30,26,22,0.92) 0%, rgba(30,26,22,0.55) 50%, rgba(30,26,22,0.9) 100%);
+}
+
+.cover-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 60px 40px;
+  max-width: 980px;
+}
+
+.cover-eyebrow {
+  font-size: 11px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  margin-bottom: 28px;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s forwards;
+}
+
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(46px, 9vw, 108px);
+  line-height: 1.02;
+  color: var(--cream);
+  letter-spacing: -3px;
+  opacity: 0;
+  animation: fadeUp 1.2s 0.6s forwards;
+}
+
+.cover h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.cover-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(20px, 2.8vw, 30px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--stone);
+  margin-top: 26px;
+  letter-spacing: 1px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+
+.cover-meta {
+  margin-top: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  opacity: 0;
+  animation: fadeUp 1s 1.25s forwards;
+}
+
+.cover-meta span {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+.cover-meta .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.cover-scroll {
+  margin-top: 72px;
+  opacity: 0;
+  animation: fadeUp 1s 1.5s forwards;
+}
+
+.cover-scroll span {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 12px;
+}
+
+.cover-scroll .line {
+  width: 1px;
+  height: 60px;
+  margin: 0 auto;
+  background: linear-gradient(to bottom, var(--gold-muted), transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(34px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── PARTNERS BAR ── */
+.partners {
+  background: var(--ink);
+  padding: 70px 40px 80px;
+  text-align: center;
+  border-top: 1px solid rgba(201,169,110,0.12);
+}
+
+.partners-eyebrow {
+  font-size: 10px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--gold-muted);
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.partner-logo {
+  height: 90px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: brightness(1.05);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.partner-logo:hover {
+  opacity: 1;
+  transform: translateY(-3px);
+}
+
+.partners-note {
+  margin-top: 50px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--stone);
+  letter-spacing: 0.5px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ── PHOTO BREAKS ── */
+.photo-full {
+  position: relative;
+  height: 68vh;
+  overflow: hidden;
+}
+
+.photo-full img {
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  position: absolute;
+  top: -15%;
+}
+
+.photo-full-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(30,26,22,0.08) 0%, rgba(30,26,22,0.62) 100%);
+}
+
+.photo-full-text {
+  position: absolute;
+  bottom: 60px;
+  left: 60px;
+  right: 60px;
+  z-index: 2;
+}
+
+.photo-full-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 5vw, 56px);
+  color: var(--cream);
+  font-style: italic;
+  letter-spacing: -1px;
+}
+
+.photo-full-text p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  margin-top: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  max-width: 580px;
+}
+
+/* ── INTRO / MANIFESTO ── */
+.intro {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 130px 40px;
+  text-align: center;
+}
+
+.section-tag {
+  font-size: 11px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin-bottom: 38px;
+  font-weight: 400;
+  color: var(--burgundy);
+}
+
+.intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.68;
+  color: var(--ink);
+}
+
+.intro-text em {
+  font-style: italic;
+  color: var(--burgundy);
+}
+
+.divider-line {
+  width: 50px;
+  height: 1px;
+  background: var(--sand);
+  margin: 42px auto;
+}
+
+.intro-note {
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--stone);
+  font-weight: 300;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* ── MANIFESTO BLOCK (NOT A SUPPLIER) ── */
+.manifesto {
+  background: var(--ink);
+  padding: 130px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.manifesto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(184,150,90,0.06) 0%, transparent 70%);
+}
+
+.manifesto-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.manifesto .section-tag {
+  color: var(--gold-muted);
+}
+
+.manifesto-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(36px, 5.5vw, 64px);
+  line-height: 1.18;
+  color: var(--cream);
+  letter-spacing: -1.5px;
+  margin-bottom: 48px;
+}
+
+.manifesto-headline em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.manifesto-strike {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--stone);
+  text-decoration: line-through;
+  text-decoration-color: rgba(155,27,48,0.5);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+.manifesto-true {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.manifesto-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 70px;
+  background: rgba(201,169,110,0.12);
+  border: 1px solid rgba(201,169,110,0.12);
+}
+
+.manifesto-cell {
+  background: var(--ink);
+  padding: 38px 26px;
+  text-align: left;
+}
+
+.manifesto-cell-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+}
+
+.manifesto-cell-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--cream);
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+
+.manifesto-cell-text {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+/* ── ORIGIN MAP ── */
+.origins {
+  padding: 130px 40px;
+  background: var(--parchment);
+  text-align: center;
+}
+
+.origins-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4.5vw, 56px);
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.origins-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--stone);
+  font-style: italic;
+  margin-bottom: 70px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.origins-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.06);
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.origin-cell {
+  background: var(--warm-white);
+  padding: 40px 22px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+
+.origin-cell:hover { background: #fff; }
+
+.origin-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.origin-region {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.origin-country {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 400;
+}
+
+/* ── CREATOR (TRAVIS) ── */
+.creator {
+  background: var(--cream);
+  padding: 140px 40px;
+}
+
+.creator-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.creator-photo-wrap {
+  position: relative;
+}
+
+.creator-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  filter: grayscale(0.15) contrast(1.05);
+  box-shadow: 0 30px 80px rgba(30,26,22,0.18);
+}
+
+.creator-photo-frame {
+  position: absolute;
+  inset: -12px -12px 12px 12px;
+  border: 1px solid var(--gold-muted);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.creator-text-wrap .section-tag { color: var(--gold); }
+
+.creator-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 4.5vw, 64px);
+  color: var(--ink);
+  margin-bottom: 8px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+}
+
+.creator-role {
+  font-size: 11px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+
+.creator-copy {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  line-height: 1.78;
+  color: #4a453e;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.creator-copy em {
+  font-style: italic;
+  color: var(--burgundy);
+}
+
+.creator-credentials {
+  list-style: none;
+  margin-top: 24px;
+  border-top: 1px solid var(--sand);
+  padding-top: 24px;
+}
+
+.creator-credentials li {
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  position: relative;
+  padding-left: 26px;
+}
+
+.creator-credentials li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
+  transform: translateY(-50%);
+}
+
+.creator-philosophy {
+  margin-top: 32px;
+  padding: 22px 26px;
+  background: rgba(184,150,90,0.06);
+  border-left: 2px solid var(--gold);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+/* ── WINE CARDS ── */
+.wine-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+
+.wine-card.reverse .wc-visual { order: 2; }
+.wine-card.reverse .wc-info { order: 1; }
+
+.wc-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  overflow: hidden;
+}
+
+.wc-visual.bg-burgundy { background: linear-gradient(160deg, #2a1418 0%, #3d1f26 50%, #1e1a16 100%); }
+.wc-visual.bg-ruby { background: linear-gradient(160deg, #1c1717 0%, #342022 50%, #1e1a16 100%); }
+.wc-visual.bg-gold { background: linear-gradient(160deg, #2a2618 0%, #342e1e 50%, #1e1a16 100%); }
+.wc-visual.bg-rose { background: linear-gradient(160deg, #2a1c1c 0%, #3a2828 50%, #1e1a16 100%); }
+.wc-visual.bg-pale { background: linear-gradient(160deg, #1f2018 0%, #2a2c20 50%, #1e1a16 100%); }
+
+.wc-visual::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+}
+
+.wc-visual.bg-burgundy::before { background: #6b2d3e; top: 25%; left: 15%; }
+.wc-visual.bg-ruby::before { background: #9b1b30; top: 15%; right: 5%; }
+.wc-visual.bg-gold::before { background: #b8965a; bottom: 15%; left: 25%; }
+.wc-visual.bg-rose::before { background: #d4a5a5; top: 25%; right: 15%; }
+.wc-visual.bg-pale::before { background: #c9d1a8; top: 20%; left: 20%; }
+
+.wine-number {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  font-family: 'Playfair Display', serif;
+  font-size: 160px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+}
+
+.bottle-img {
+  max-height: 65vh;
+  max-width: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 50px 100px rgba(0,0,0,0.5));
+  position: relative;
+  z-index: 1;
+  transition: transform 0.6s ease;
+}
+
+.wc-visual:hover .bottle-img {
+  transform: translateY(-8px) scale(1.015);
+}
+
+.wine-type-badge {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+  font-weight: 300;
+  z-index: 1;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.wc-info {
+  padding: 90px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--warm-white);
+  position: relative;
+}
+
+.wc-info::before {
+  content: '';
+  position: absolute;
+  top: 90px;
+  bottom: 90px;
+  left: 0;
+  width: 3px;
+}
+
+.wine-1 .wc-info::before { background: linear-gradient(to bottom, transparent, var(--ruby), transparent); }
+.wine-2 .wc-info::before { background: linear-gradient(to bottom, transparent, var(--gold), transparent); }
+.wine-3 .wc-info::before { background: linear-gradient(to bottom, transparent, var(--burgundy), transparent); }
+.wine-4 .wc-info::before { background: linear-gradient(to bottom, transparent, var(--rose), transparent); }
+.wine-5 .wc-info::before { background: linear-gradient(to bottom, transparent, var(--olive), transparent); }
+
+.wine-eyebrow {
+  font-size: 11px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.wine-1 .wine-eyebrow { color: var(--ruby); }
+.wine-2 .wine-eyebrow { color: var(--gold); }
+.wine-3 .wine-eyebrow { color: var(--burgundy); }
+.wine-4 .wine-eyebrow { color: var(--terracotta); }
+.wine-5 .wine-eyebrow { color: var(--olive); }
+
+.wc-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(42px, 5.5vw, 72px);
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -2px;
+}
+
+.wc-info .wine-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: var(--stone);
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+.tasting-prose { margin-bottom: 34px; }
+
+.tasting-prose h4 {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.tasting-prose p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  line-height: 1.85;
+  color: #4a453e;
+  font-weight: 300;
+}
+
+.tasting-prose p em {
+  font-style: italic;
+  color: var(--burgundy);
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--sand);
+  border: 1px solid var(--sand);
+  margin-bottom: 32px;
+}
+
+.spec-cell {
+  padding: 20px 22px;
+  background: var(--warm-white);
+}
+
+.spec-cell label {
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.spec-cell span {
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* TECHNICAL DATA ROW */
+.tech-data {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 28px;
+  border: 1px solid var(--sand);
+  background: var(--sand);
+}
+
+.tech-cell {
+  flex: 1 1 33%;
+  background: var(--warm-white);
+  padding: 14px 16px;
+  text-align: center;
+  border-right: 1px solid var(--sand);
+  border-bottom: 1px solid var(--sand);
+}
+
+.tech-cell label {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.tech-cell span {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.positioning-strip {
+  margin-top: 8px;
+  padding: 24px 28px;
+  background: rgba(107,45,62,0.04);
+  border-left: 2px solid var(--burgundy);
+}
+
+.wine-2 .positioning-strip {
+  background: rgba(184,150,90,0.05);
+  border-left-color: var(--gold);
+}
+
+.wine-3 .positioning-strip {
+  background: rgba(107,45,62,0.05);
+  border-left-color: var(--burgundy);
+}
+
+.wine-4 .positioning-strip {
+  background: rgba(184,111,78,0.05);
+  border-left-color: var(--terracotta);
+}
+
+.wine-5 .positioning-strip {
+  background: rgba(90,107,74,0.05);
+  border-left-color: var(--olive-muted);
+}
+
+.positioning-strip h5 {
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.positioning-strip p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--ink);
+  font-style: italic;
+  font-weight: 400;
+}
+
+/* ── INCENTIVES ── */
+.incentives {
+  padding: 130px 40px;
+  background: var(--ink);
+  position: relative;
+}
+
+.incentives::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(184,150,90,0.05) 0%, transparent 70%);
+}
+
+.incentives-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.incentives .section-tag { color: var(--gold-muted); text-align: center; }
+
+.incentives-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4.5vw, 54px);
+  color: var(--cream);
+  letter-spacing: -1.5px;
+  margin-bottom: 22px;
+  text-align: center;
+  font-style: italic;
+}
+
+.incentives-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--stone);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 70px;
+  max-width: 660px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.55;
+}
+
+.incentives-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.incentive-card {
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(201,169,110,0.14);
+  padding: 38px 32px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.incentive-card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(201,169,110,0.28);
+}
+
+.incentive-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 4px;
+  margin-bottom: 18px;
+}
+
+.incentive-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  color: var(--cream);
+  margin-bottom: 16px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.incentive-text {
+  font-size: 14px;
+  line-height: 1.78;
+  color: rgba(247,243,236,0.7);
+  font-weight: 300;
+}
+
+/* ── HORIZON / TIMELINE ── */
+.horizon {
+  padding: 130px 40px;
+  background: var(--parchment);
+}
+
+.horizon-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.horizon-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(34px, 4.5vw, 54px);
+  color: var(--ink);
+  letter-spacing: -1.5px;
+  margin-bottom: 22px;
+  font-style: italic;
+}
+
+.horizon-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px;
+  color: var(--stone);
+  font-style: italic;
+  margin-bottom: 70px;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.horizon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(0,0,0,0.06);
+}
+
+.horizon-card {
+  background: var(--warm-white);
+  padding: 50px 32px;
+  text-align: left;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.horizon-card:hover { background: #fff; }
+
+.horizon-stage {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.horizon-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--ink);
+  margin-bottom: 16px;
+  font-style: italic;
+  letter-spacing: -0.5px;
+}
+
+.horizon-card p {
+  font-size: 14px;
+  line-height: 1.78;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+/* ── CLOSING ── */
+.closing {
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 40px;
+  background: var(--cream);
+  position: relative;
+}
+
+.closing-inner { max-width: 760px; }
+
+.closing-eyebrow {
+  font-size: 11px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 38px;
+  font-weight: 400;
+}
+
+.closing-quote {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.42;
+  color: var(--ink);
+  margin-bottom: 42px;
+  letter-spacing: -1px;
+}
+
+.closing-quote em {
+  font-style: italic;
+  color: var(--burgundy);
+}
+
+.closing-line {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, var(--sand), transparent);
+  margin: 0 auto 28px;
+}
+
+.closing-sig {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  color: var(--stone);
+  margin-bottom: 14px;
+}
+
+.closing-contact {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--sand);
+  display: inline-block;
+}
+
+.closing-contact-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.closing-contact-email {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: var(--burgundy);
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  padding: 56px 40px 48px;
+  text-align: center;
+  background: var(--ink);
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.footer-partners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.footer-partners img {
+  height: 38px;
+  width: auto;
+  opacity: 0.45;
+  filter: brightness(1.1);
+  transition: opacity 0.3s;
+}
+
+.footer-partners img:hover { opacity: 0.75; }
+
+.footer p {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  font-weight: 400;
+}
+
+.footer-tag {
+  margin-top: 12px;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-style: italic;
+  font-size: 13px !important;
+  letter-spacing: 1px !important;
+  text-transform: none !important;
+  color: rgba(255,255,255,0.3) !important;
+}
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .wine-card,
+  .wine-card.reverse { grid-template-columns: 1fr; }
+  .wine-card.reverse .wc-visual,
+  .wine-card.reverse .wc-info { order: 0; }
+  .wc-visual { min-height: 60vh; }
+  .wc-info { padding: 60px 32px; }
+  .wc-info::before { display: none; }
+  .origins-grid { grid-template-columns: 1fr 1fr; }
+  .manifesto-grid { grid-template-columns: 1fr; }
+  .horizon-grid { grid-template-columns: 1fr; }
+  .incentives-grid { grid-template-columns: 1fr; }
+  .creator-inner { grid-template-columns: 1fr; gap: 50px; }
+  .creator-photo-wrap { max-width: 380px; margin: 0 auto; }
+  .cover-meta { flex-direction: column; gap: 14px; }
+  .cover-meta .dot { display: none; }
+  .cover-bg { grid-template-columns: 1fr; }
+  .cover-bg img:nth-child(2) { display: none; }
+  .photo-full { height: 50vh; }
+  .photo-full-text { left: 32px; right: 32px; bottom: 40px; }
+  .partners-row { gap: 50px; }
+  .partner-logo { height: 70px; }
+  .footer-partners { gap: 36px; }
+  .footer-partners img { height: 30px; }
+  .lang-switcher { top: 12px; right: 12px; padding: 4px; }
+  .lang-btn { padding: 6px 8px; font-size: 9px; letter-spacing: 1px; }
+}
+
+@media (max-width: 600px) {
+  .specs-grid { grid-template-columns: 1fr; }
+  .wine-number { font-size: 100px; }
+  .bottle-img { max-width: 180px; }
+  .origins-grid { grid-template-columns: 1fr; }
+  .tech-cell { flex: 1 1 50%; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ══════ LANGUAGE SWITCHER ══════ -->
+<div class="lang-switcher">
+  <button class="lang-btn active" data-lang="en">EN</button>
+  <button class="lang-btn" data-lang="de">DE</button>
+  <button class="lang-btn" data-lang="fr">FR</button>
+  <button class="lang-btn" data-lang="it">IT</button>
+  <button class="lang-btn" data-lang="es">ES</button>
+</div>
+
+<!-- ══════ COVER ══════ -->
+<section class="cover">
+  <div class="cover-bg">
+    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017339/5_ry6xmg.png" alt="">
+    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774016638/56_ys4mhm.jpg" alt="">
+  </div>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow" data-i18n="cover.eyebrow">Wine Partnership Proposal</div>
+    <h1 data-i18n="cover.title">A Curated<br><em>Wine Experience</em></h1>
+    <div class="cover-sub" data-i18n="cover.sub">Five wines with character, depth, and a clear reading of contemporary luxury — built around your audience, your pace, your positioning.</div>
+
+    <div class="cover-meta">
+      <span data-i18n="cover.meta.1">Crafted Selection</span>
+      <div class="dot"></div>
+      <span data-i18n="cover.meta.2">International Origins</span>
+      <div class="dot"></div>
+      <span>2026</span>
+    </div>
+
+    <div class="cover-scroll">
+      <span data-i18n="cover.scroll">Discover</span>
+      <div class="line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PARTNERS BAR ══════ -->
+<section class="partners">
+  <div class="partners-eyebrow" data-i18n="partners.eyebrow">In collaboration with</div>
+  <div class="partners-row">
+    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/3_koxbe4.png" alt="Bodega de los Reyes">
+    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/1_iv5l2i.png" alt="Nikki Beach Mallorca">
+    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/2_uc1ber.png" alt="Gran Folies">
+  </div>
+  <p class="partners-note" data-i18n="partners.note">Our first year expanding this curated selection across Europe — placing these wines in environments where they will be properly understood, served, and valued.</p>
+</section>
+
+<!-- ══════ MANIFESTO ══════ -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div class="section-tag reveal" data-i18n="manifesto.tag">Our Approach</div>
+    <h2 class="manifesto-headline reveal" data-i18n="manifesto.headline">Wine is not an accessory.<br>It is <em>atmosphere.</em><br>It is <em>memory.</em><br>It is <em>brand language.</em></h2>
+
+    <p class="manifesto-strike reveal reveal-delay-1" data-i18n="manifesto.strike">This proposal is not about becoming another supplier.</p>
+    <p class="manifesto-true reveal reveal-delay-2" data-i18n="manifesto.true">It is about becoming a wine partner.</p>
+
+    <div class="manifesto-grid">
+      <div class="manifesto-cell reveal">
+        <div class="manifesto-cell-num">01</div>
+        <div class="manifesto-cell-title" data-i18n="manifesto.cell1.title">A partnership, not a transaction</div>
+        <div class="manifesto-cell-text" data-i18n="manifesto.cell1.text">A relationship built around your rhythm, your pace, your audience and your international positioning. The intention is not to place bottles. It is to accompany you over time, refining and growing together.</div>
+      </div>
+      <div class="manifesto-cell reveal reveal-delay-1">
+        <div class="manifesto-cell-num">02</div>
+        <div class="manifesto-cell-title" data-i18n="manifesto.cell2.title">A point of view, not a list</div>
+        <div class="manifesto-cell-text" data-i18n="manifesto.cell2.text">Each wine has been chosen for a precise reason: presence, texture, evolution, rarity, dialogue. A coherent reading of style and identity rather than an inventory of options.</div>
+      </div>
+      <div class="manifesto-cell reveal reveal-delay-2">
+        <div class="manifesto-cell-num">03</div>
+        <div class="manifesto-cell-title" data-i18n="manifesto.cell3.title">An open, evolving framework</div>
+        <div class="manifesto-cell-text" data-i18n="manifesto.cell3.text">Nothing is fixed. The selection, the structure, the incentives — all are built together based on real performance and guest response, in honest conversation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ORIGINS ══════ -->
+<section class="origins">
+  <div class="section-tag reveal" data-i18n="origins.tag">A Global Vision of Wine</div>
+  <h2 class="origins-title reveal" data-i18n="origins.title">Hand-selected from some of the most expressive regions on earth</h2>
+  <p class="origins-sub reveal" data-i18n="origins.sub">Not bound to a single denomination — bound to harmony in the glass.</p>
+
+  <div class="origins-grid">
+    <div class="origin-cell reveal">
+      <div class="origin-num">01</div>
+      <div class="origin-region">Napa Valley</div>
+      <div class="origin-country" data-i18n="origins.country.usa">USA</div>
+    </div>
+    <div class="origin-cell reveal reveal-delay-1">
+      <div class="origin-num">02</div>
+      <div class="origin-region">Right Bank Bordeaux</div>
+      <div class="origin-country" data-i18n="origins.country.fra">France</div>
+    </div>
+    <div class="origin-cell reveal reveal-delay-2">
+      <div class="origin-num">03</div>
+      <div class="origin-region">Dehesa del Carrizal</div>
+      <div class="origin-country" data-i18n="origins.country.esp">Spain</div>
+    </div>
+    <div class="origin-cell reveal reveal-delay-3">
+      <div class="origin-num">04</div>
+      <div class="origin-region">Stellenbosch &amp; Helderberg</div>
+      <div class="origin-country" data-i18n="origins.country.zaf">South Africa</div>
+    </div>
+    <div class="origin-cell reveal reveal-delay-3">
+      <div class="origin-num">05</div>
+      <div class="origin-region">Valle de Uco</div>
+      <div class="origin-country" data-i18n="origins.country.arg">Argentina</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PHOTO 1 ══════ -->
+<div class="photo-full">
+  <img src="https://res.cloudinary.com/dalc9chdm/image/upload/q_auto/f_auto/v1775302785/PHOTO-2026-04-04-13-39-02_ynxmjx.jpg" class="parallax-img">
+  <div class="photo-full-overlay"></div>
+  <div class="photo-full-text">
+    <h3 class="reveal" data-i18n="photo1.title">A proposal for atmosphere, service and memory</h3>
+    <p class="reveal reveal-delay-1" data-i18n="photo1.text">Not a wine list. A reading of style, positioning and experience.</p>
+  </div>
+</div>
+
+<!-- ══════ CREATOR (TRAVIS) ══════ -->
+<section class="creator">
+  <div class="creator-inner">
+    <div class="creator-photo-wrap reveal">
+      <img class="creator-photo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017350/10_qefomi.png" alt="Travis Braithwaite">
+      <div class="creator-photo-frame"></div>
+    </div>
+    <div class="creator-text-wrap">
+      <div class="section-tag reveal" data-i18n="creator.tag">The Hand Behind the Vision</div>
+      <div class="creator-name reveal">Travis Braithwaite</div>
+      <div class="creator-role reveal" data-i18n="creator.role">Crafting · Direction · Wine Identity</div>
+      <p class="creator-copy reveal" data-i18n="creator.copy1">Born in Canada and raised in South Africa, Travis Braithwaite has shaped a body of work defined by aesthetic sensitivity, international ambition and a precise understanding of how to build wines with identity, depth and the capacity to move people.</p>
+      <p class="creator-copy reveal reveal-delay-1" data-i18n="creator.copy2">He does not work by denomination. He works by <em>harmony in the glass</em> — and that philosophy defines every bottle within this proposal.</p>
+
+      <ul class="creator-credentials reveal reveal-delay-2">
+        <li data-i18n="creator.cred1">A globally acclaimed winemaker</li>
+        <li data-i18n="creator.cred2">Recipient of international awards across multiple continents</li>
+        <li data-i18n="creator.cred3">Renowned for mastering complex, multi-country blends</li>
+        <li data-i18n="creator.cred4">Creative force behind some of the most original modern wine projects in circulation</li>
+      </ul>
+
+      <div class="creator-philosophy reveal reveal-delay-3" data-i18n="creator.philosophy">More than making wine, Travis treats each label as a work of fine construction — balance, character, journey, and a clear idea of contemporary luxury.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PHOTO 2 ══════ -->
+<div class="photo-full">
+  <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774016652/59_uttomj.jpg" alt="" class="parallax-img">
+  <div class="photo-full-overlay"></div>
+  <div class="photo-full-text">
+    <h3 class="reveal" data-i18n="photo2.title">The Selection</h3>
+    <p class="reveal reveal-delay-1" data-i18n="photo2.text">Five distinct readings of wine: presence, texture, rarity, freshness and dialogue.</p>
+  </div>
+</div>
+
+<!-- ══════ WINE 1 — NIP SLIP ══════ -->
+<section class="wine-section">
+  <div class="wine-card wine-1 reverse">
+    <div class="wc-visual bg-ruby">
+      <div class="wine-number">01</div>
+      <img class="bottle-img" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017352/11_afwrmg.png" alt="Nip Slip">
+      <div class="wine-type-badge" data-i18n="wine1.badge">Red · Stellenbosch · International Influence</div>
+    </div>
+    <div class="wc-info">
+      <div class="wine-eyebrow reveal" data-i18n="wine1.eyebrow">First Wine · Immediate Presence · Commercial Flexibility</div>
+      <h2 class="reveal">Nip Slip</h2>
+      <div class="wine-subtitle reveal" data-i18n="wine1.subtitle">Red · Shiraz · Cabernet Sauvignon · Mourvèdre</div>
+
+      <div class="tasting-prose reveal">
+        <h4 data-i18n="wine.h.impression">General Impression</h4>
+        <p data-i18n="wine1.impression">Nip Slip is an iconic red blend that captures a transformative journey — from playful youth to graceful sophistication. Built on a Stellenbosch core with international varietal influence, it shows ripe red and black fruit, subtle spice, a silky entry, structured mid-palate and polished tannins. <em>The wine with the greatest commercial flexibility within this proposal</em> — leaving room for incentives, activation, staff engagement and volume-driven performance.</p>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec-cell"><label data-i18n="wine.s.blend">Blend</label><span>Shiraz · Cabernet Sauvignon · Mourvèdre</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.origin">Origin</label><span data-i18n="wine1.origin">Stellenbosch core · International influence</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.style">Style</label><span data-i18n="wine1.style">Deep ruby · Ripe fruit · Subtle spice</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.palate">Palate</label><span data-i18n="wine1.palate">Silky · Structured · Polished tannin</span></div>
+      </div>
+
+      <div class="positioning-strip reveal">
+        <h5 data-i18n="wine.h.position">Positioning</h5>
+        <p data-i18n="wine1.position">A versatile, charismatic red — fruit, structure and elegance for gastronomic service, with the immediacy needed to perform naturally on table.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PHOTO 3 ══════ -->
+<div class="photo-full">
+  <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017362/15_z09oim.png" alt="" class="parallax-img">
+  <div class="photo-full-overlay"></div>
+</div>
+
+<!-- ══════ WINE 2 — GRACE ══════ -->
+<section class="wine-section">
+  <div class="wine-card wine-2">
+    <div class="wc-visual bg-gold">
+      <div class="wine-number">02</div>
+      <img class="bottle-img" src="https://res.cloudinary.com/dqje367sj/image/upload/v1774188366/5A878982-808A-4435-9701-F22D94FC6C56_hxpogn.png" alt="Grace">
+      <div class="wine-type-badge" data-i18n="wine2.badge">White · Chenin Blanc · Viognier · Chardonnay</div>
+    </div>
+    <div class="wc-info">
+      <div class="wine-eyebrow reveal" data-i18n="wine2.eyebrow">Second Wine · A White With Real Depth</div>
+      <h2 class="reveal">Grace 2020</h2>
+      <div class="wine-subtitle reveal" data-i18n="wine2.subtitle">Chenin Blanc 60% · Viognier 30% · Chardonnay 10%</div>
+
+      <div class="tasting-prose reveal">
+        <h4 data-i18n="wine.h.impression">General Impression</h4>
+        <p data-i18n="wine2.impression">A white of serious ambition — built not to dazzle through easy freshness, but through depth, texture and evolution. Citrus and peach lift on the nose, with vanilla and pronounced lees character. The Chenin gives spine and structure; the Viognier adds floral lift and an enveloping mouthfeel. <em>This is not a fragile white. It does not fade between vintages — it holds, evolves and gains depth.</em> A natural candidate for high-rotation signature white without ever compromising elegance.</p>
+      </div>
+
+      <div class="tech-data reveal">
+        <div class="tech-cell"><label>ALC</label><span>13%</span></div>
+        <div class="tech-cell"><label>PH</label><span>3.4</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.acidity">ACIDITY</label><span>5.4 g/L</span></div>
+        <div class="tech-cell"><label>RS</label><span>3.4 g/L</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.harvest">HARVEST</label><span>4 t/ha</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.bottles">BOTTLES</label><span>2,000</span></div>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec-cell"><label data-i18n="wine.s.blend">Blend</label><span>Chenin Blanc · Viognier · Chardonnay</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.profile">Profile</label><span data-i18n="wine2.profile">Deep · Textured · Floral · Citrus · Lees</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.aging">Style</label><span data-i18n="wine2.style">Tropical fruit · Integrated acidity &amp; alcohol</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.pairing">Pairing</label><span data-i18n="wine2.pairing">Fresh seafood · Mussels · Duck</span></div>
+      </div>
+
+      <div class="positioning-strip reveal">
+        <h5 data-i18n="wine.h.position">Positioning</h5>
+        <p data-i18n="wine2.position">A gastronomic white with journey and memory — capable of holding a table that asks for more than a conventional young white.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PHOTO 4 ══════ -->
+<div class="photo-full">
+  <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774016638/55_joare6.jpg" alt="" class="parallax-img">
+  <div class="photo-full-overlay"></div>
+  <div class="photo-full-text">
+    <h3 class="reveal">Pangea</h3>
+    <p class="reveal reveal-delay-1" data-i18n="photo4.text">A wine conceived as international narrative, collection and conversation.</p>
+  </div>
+</div>
+
+<!-- ══════ WINE 3 — PANGEA ══════ -->
+<section class="wine-section">
+  <div class="wine-card wine-3 reverse">
+    <div class="wc-visual bg-burgundy">
+      <div class="wine-number">03</div>
+      <img class="bottle-img" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017354/12_ct79it.png" alt="Pangea">
+      <div class="wine-type-badge" data-i18n="wine3.badge">Red · A True Wine of the World · Limited Edition</div>
+    </div>
+    <div class="wc-info">
+      <div class="wine-eyebrow reveal" data-i18n="wine3.eyebrow">Third Wine · Presence &amp; Prestige</div>
+      <h2 class="reveal">Pangea</h2>
+      <div class="wine-subtitle reveal" data-i18n="wine3.subtitle">A True Wine of the World · Limited Edition</div>
+
+      <div class="tasting-prose reveal">
+        <h4 data-i18n="wine.h.impression">General Impression</h4>
+        <p data-i18n="wine3.impression">Pangea is conceived from an extraordinary idea: <em>a true Wine of the World</em>, assembled from noble varieties grown in some of the planet's greatest origins. Cabernet Sauvignon from Napa Valley, Merlot from Right Bank Bordeaux, Petit Verdot from Spain, Cabernet Franc from South Africa and Malbec from Argentina. Complex yet seamless. Layered yet restrained. Not designed for volume — designed for presence and prestige. Its role is to elevate the entire wine program by association.</p>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec-cell"><label data-i18n="wine.s.blend">Blend</label><span>Cabernet Sauvignon · Merlot · Petit Verdot · Cabernet Franc · Malbec</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.origin">Origin</label><span>Napa · Bordeaux · Spain · South Africa · Argentina</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.character">Character</label><span data-i18n="wine3.character">Complex · Sophisticated · Enveloping</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.role">Role</label><span data-i18n="wine3.role">Collection bottle · Conversation · Prestige</span></div>
+      </div>
+
+      <div class="positioning-strip reveal">
+        <h5 data-i18n="wine.h.position">Positioning</h5>
+        <p data-i18n="wine3.position">Rare, international, memorable. Its greatness lies in turning distinct terroirs and noble varieties into one coherent, serious bottle of extraordinary presence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WINE 4 — EUPHORIA ROSÉ ══════ -->
+<section class="wine-section">
+  <div class="wine-card wine-4">
+    <div class="wc-visual bg-rose">
+      <div class="wine-number">04</div>
+      <img class="bottle-img" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017339/5_ry6xmg.png" alt="Euphoria Rosé">
+      <div class="wine-type-badge" data-i18n="wine4.badge">Rosé · Cinsault · Grenache · Shiraz</div>
+    </div>
+    <div class="wc-info">
+      <div class="wine-eyebrow reveal" data-i18n="wine4.eyebrow">Fourth Wine · The Perfect Summer Rosé</div>
+      <h2 class="reveal">Euphoria Rosé 2020</h2>
+      <div class="wine-subtitle reveal" data-i18n="wine4.subtitle">Cinsault 48% · Grenache 43% · Shiraz 9%</div>
+
+      <div class="tasting-prose reveal">
+        <h4 data-i18n="wine.h.impression">General Impression</h4>
+        <p data-i18n="wine4.impression">A delicate, refreshing and dry rosé with a pale coral colour. Undertones of apple and yellow peach combine with refined minerality and pure fruit. Integrated acidity plays against the sweetness of the fruit components to give a balanced, perfectly weighted wine. <em>A long lingering finish that leaves you wanting more</em> — the natural rosé for daytime, terrace and warm-weather service.</p>
+      </div>
+
+      <div class="tech-data reveal">
+        <div class="tech-cell"><label>ALC</label><span>13.5%</span></div>
+        <div class="tech-cell"><label>PH</label><span>3.4</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.acidity">ACIDITY</label><span>6.2 g/L</span></div>
+        <div class="tech-cell"><label>RS</label><span>3.4 g/L</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.harvest">HARVEST</label><span>6 t/ha</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.bottles">BOTTLES</label><span>1,800</span></div>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec-cell"><label data-i18n="wine.s.blend">Blend</label><span>Cinsault · Grenache · Shiraz</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.colour">Colour</label><span data-i18n="wine4.colour">Pale coral · Luminous</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.profile">Profile</label><span data-i18n="wine4.profile">Apple · Yellow peach · Mineral</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.pairing">Pairing</label><span data-i18n="wine4.pairing">Daytime · Terrace · Light cuisine</span></div>
+      </div>
+
+      <div class="positioning-strip reveal">
+        <h5 data-i18n="wine.h.position">Positioning</h5>
+        <p data-i18n="wine4.position">The signature rosé of warm weather: balanced, weightless, luminous. Strong rotation and broad guest appeal without compromising refinement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WINE 5 — SAUVIGNON BLANC ══════ -->
+<section class="wine-section">
+  <div class="wine-card wine-5 reverse">
+    <div class="wc-visual bg-pale">
+      <div class="wine-number">05</div>
+      <img class="bottle-img" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774017362/15_z09oim.png" alt="Sauvignon Blanc 2018">
+      <div class="wine-type-badge" data-i18n="wine5.badge">White · Sauvignon Blanc · Lightly Oaked</div>
+    </div>
+    <div class="wc-info">
+      <div class="wine-eyebrow reveal" data-i18n="wine5.eyebrow">Fifth Wine · Mineral Precision</div>
+      <h2 class="reveal">Sauvignon Blanc 2018</h2>
+      <div class="wine-subtitle reveal" data-i18n="wine5.subtitle">100% Sauvignon Blanc · Lightly oaked · Site-driven</div>
+
+      <div class="tasting-prose reveal">
+        <h4 data-i18n="wine.h.impression">General Impression</h4>
+        <p data-i18n="wine5.impression">A unique Sauvignon Blanc, a reflection of site and soil. South-facing 16-year-old vineyards sitting 175m above sea level, on deep Hutton and Clovelly soils. Lightly oaked, displaying minerality with well-balanced natural acids — combining herbaceous notes with integrated tropical fruit: lime zest, green apple and pineapple. <em>An elegant freshness with a long, crisp finish</em> — perfect with fresh oysters, grilled fish, Asian-inspired dishes and sushi.</p>
+      </div>
+
+      <div class="tech-data reveal">
+        <div class="tech-cell"><label>ALC</label><span>12%</span></div>
+        <div class="tech-cell"><label>PH</label><span>3.44</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.acidity">ACIDITY</label><span>5.0 g/L</span></div>
+        <div class="tech-cell"><label>RS</label><span>2.1 g/L</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.harvest">HARVEST</label><span>6 t/ha</span></div>
+        <div class="tech-cell"><label data-i18n="wine.t.bottles">BOTTLES</label><span>1,760</span></div>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec-cell"><label data-i18n="wine.s.variety">Variety</label><span>100% Sauvignon Blanc</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.site">Site</label><span data-i18n="wine5.site">175m altitude · Hutton &amp; Clovelly soils</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.profile">Profile</label><span data-i18n="wine5.profile">Lime zest · Green apple · Pineapple</span></div>
+        <div class="spec-cell"><label data-i18n="wine.s.pairing">Pairing</label><span data-i18n="wine5.pairing">Oysters · Grilled fish · Sushi · Asian</span></div>
+      </div>
+
+      <div class="positioning-strip reveal">
+        <h5 data-i18n="wine.h.position">Positioning</h5>
+        <p data-i18n="wine5.position">A precise, site-driven white with crystalline finish — for raw bar, sushi service and the moments where elegance is measured by clarity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ PHOTO 5 ══════ -->
+<div class="photo-full">
+  <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1774016638/57_n5rxvx.jpg" alt="" class="parallax-img">
+  <div class="photo-full-overlay"></div>
+</div>
+
+<!-- ══════ INCENTIVES ══════ -->
+<section class="incentives">
+  <div class="incentives-inner">
+    <div class="section-tag reveal" data-i18n="incentives.tag">Incentives &amp; Flexibility</div>
+    <h2 class="incentives-title reveal" data-i18n="incentives.title">No fixed structures</h2>
+    <p class="incentives-sub reveal" data-i18n="incentives.sub">First we identify which wines and brands are of real interest. From there, the commercial framework is built together.</p>
+
+    <div class="incentives-grid">
+      <div class="incentive-card reveal">
+        <div class="incentive-num">01</div>
+        <div class="incentive-title" data-i18n="incentives.c1.title">Service-staff cashback</div>
+        <div class="incentive-text" data-i18n="incentives.c1.text">2.5% cashback for service staff based on menu price — a direct, motivating mechanic that aligns the floor team with the wines they recommend.</div>
+      </div>
+      <div class="incentive-card reveal reveal-delay-1">
+        <div class="incentive-num">02</div>
+        <div class="incentive-title" data-i18n="incentives.c2.title">Venue-level rebates</div>
+        <div class="incentive-text" data-i18n="incentives.c2.text">Sales-based rebates structured around real performance — a transparent mechanism that grows in value as the partnership grows.</div>
+      </div>
+      <div class="incentive-card reveal reveal-delay-2">
+        <div class="incentive-num">03</div>
+        <div class="incentive-title" data-i18n="incentives.c3.title">Experience-led rewards</div>
+        <div class="incentive-text" data-i18n="incentives.c3.text">Private tastings, professional wine training, experiential rewards and curated wine cases — built for the people who carry the program every day.</div>
+      </div>
+      <div class="incentive-card reveal reveal-delay-3">
+        <div class="incentive-num">04</div>
+        <div class="incentive-title" data-i18n="incentives.c4.title">An open conversation</div>
+        <div class="incentive-text" data-i18n="incentives.c4.text">There are no fixed structures. Every framework — commercial, operational, creative — is shaped to fit the venue, not imposed onto it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ HORIZON ══════ -->
+<section class="horizon">
+  <div class="horizon-inner">
+    <div class="section-tag reveal" data-i18n="horizon.tag">A Shared Horizon</div>
+    <h2 class="horizon-title reveal" data-i18n="horizon.title">Built together, not imposed</h2>
+    <p class="horizon-sub reveal" data-i18n="horizon.sub">The strongest wine programs grow in stages. This is how we see ours unfolding with you.</p>
+
+    <div class="horizon-grid">
+      <div class="horizon-card reveal">
+        <div class="horizon-stage" data-i18n="horizon.s1.stage">Short term</div>
+        <h4 data-i18n="horizon.s1.title">Introduce</h4>
+        <p data-i18n="horizon.s1.text">Establish a coherent, refined wine presence that integrates naturally into the venue experience — without disruption to existing rhythm or service.</p>
+      </div>
+      <div class="horizon-card reveal reveal-delay-1">
+        <div class="horizon-stage" data-i18n="horizon.s2.stage">Mid term</div>
+        <h4 data-i18n="horizon.s2.title">Consolidate</h4>
+        <p data-i18n="horizon.s2.text">Optimise rotation, refine the selection and adjust strategy based on real performance and guest response — together, with transparent data.</p>
+      </div>
+      <div class="horizon-card reveal reveal-delay-2">
+        <div class="horizon-stage" data-i18n="horizon.s3.stage">Long term</div>
+        <h4 data-i18n="horizon.s3.title">Build &amp; grow</h4>
+        <p data-i18n="horizon.s3.text">A stable wine partnership, special projects, exclusive allocations — and a relationship built on trust, shared standards and shared ambition.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CLOSING ══════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="closing-eyebrow reveal" data-i18n="closing.eyebrow">Closing Thought</div>
+    <p class="closing-quote reveal" data-i18n="closing.quote">A great selection does not only elevate the list.<br>It elevates <em>memory,</em> conversation,<br>and the perception of the place itself.</p>
+    <div class="closing-line reveal"></div>
+    <div class="closing-sig reveal" data-i18n="closing.sig">This is not a closed proposal — it is an open conversation.</div>
+
+    <div class="closing-contact reveal">
+      <div class="closing-contact-label" data-i18n="closing.contact">To begin the conversation</div>
+      <div class="closing-contact-email">magape09@gmail.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<div class="footer">
+  <div class="footer-partners">
+    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/3_koxbe4.png" alt="Bodega de los Reyes">
+    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/1_iv5l2i.png" alt="Nikki Beach Mallorca">
+    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/2_uc1ber.png" alt="Gran Folies">
+  </div>
+  <p>Wine Partnership Proposal · 2026</p>
+  <p class="footer-tag" data-i18n="footer.tag">Crafted with respect for the table, the team and the guest.</p>
+</div>
+
+<script>
+(function() {
+  "use strict";
+
+  // ── TRANSLATIONS ──
+  const translations = {
+    en: {
+      "cover.eyebrow": "Wine Partnership Proposal",
+      "cover.title": "A Curated<br><em>Wine Experience</em>",
+      "cover.sub": "Five wines with character, depth, and a clear reading of contemporary luxury — built around your audience, your pace, your positioning.",
+      "cover.meta.1": "Crafted Selection",
+      "cover.meta.2": "International Origins",
+      "cover.scroll": "Discover",
+      "partners.eyebrow": "In collaboration with",
+      "partners.note": "Our first year expanding this curated selection across Europe — placing these wines in environments where they will be properly understood, served, and valued.",
+      "manifesto.tag": "Our Approach",
+      "manifesto.headline": "Wine is not an accessory.<br>It is <em>atmosphere.</em><br>It is <em>memory.</em><br>It is <em>brand language.</em>",
+      "manifesto.strike": "This proposal is not about becoming another supplier.",
+      "manifesto.true": "It is about becoming a wine partner.",
+      "manifesto.cell1.title": "A partnership, not a transaction",
+      "manifesto.cell1.text": "A relationship built around your rhythm, your pace, your audience and your international positioning. The intention is not to place bottles. It is to accompany you over time, refining and growing together.",
+      "manifesto.cell2.title": "A point of view, not a list",
+      "manifesto.cell2.text": "Each wine has been chosen for a precise reason: presence, texture, evolution, rarity, dialogue. A coherent reading of style and identity rather than an inventory of options.",
+      "manifesto.cell3.title": "An open, evolving framework",
+      "manifesto.cell3.text": "Nothing is fixed. The selection, the structure, the incentives — all are built together based on real performance and guest response, in honest conversation.",
+      "origins.tag": "A Global Vision of Wine",
+      "origins.title": "Hand-selected from some of the most expressive regions on earth",
+      "origins.sub": "Not bound to a single denomination — bound to harmony in the glass.",
+      "origins.country.usa": "USA",
+      "origins.country.fra": "France",
+      "origins.country.esp": "Spain",
+      "origins.country.zaf": "South Africa",
+      "origins.country.arg": "Argentina",
+      "photo1.title": "A proposal for atmosphere, service and memory",
+      "photo1.text": "Not a wine list. A reading of style, positioning and experience.",
+      "creator.tag": "The Hand Behind the Vision",
+      "creator.role": "Crafting · Direction · Wine Identity",
+      "creator.copy1": "Born in Canada and raised in South Africa, Travis Braithwaite has shaped a body of work defined by aesthetic sensitivity, international ambition and a precise understanding of how to build wines with identity, depth and the capacity to move people.",
+      "creator.copy2": "He does not work by denomination. He works by <em>harmony in the glass</em> — and that philosophy defines every bottle within this proposal.",
+      "creator.cred1": "A globally acclaimed winemaker",
+      "creator.cred2": "Recipient of international awards across multiple continents",
+      "creator.cred3": "Renowned for mastering complex, multi-country blends",
+      "creator.cred4": "Creative force behind some of the most original modern wine projects in circulation",
+      "creator.philosophy": "More than making wine, Travis treats each label as a work of fine construction — balance, character, journey, and a clear idea of contemporary luxury.",
+      "photo2.title": "The Selection",
+      "photo2.text": "Five distinct readings of wine: presence, texture, rarity, freshness and dialogue.",
+      "wine.h.impression": "General Impression",
+      "wine.h.position": "Positioning",
+      "wine.s.blend": "Blend",
+      "wine.s.origin": "Origin",
+      "wine.s.style": "Style",
+      "wine.s.palate": "Palate",
+      "wine.s.profile": "Profile",
+      "wine.s.aging": "Style",
+      "wine.s.pairing": "Pairing",
+      "wine.s.character": "Character",
+      "wine.s.role": "Role",
+      "wine.s.colour": "Colour",
+      "wine.s.variety": "Variety",
+      "wine.s.site": "Site",
+      "wine.t.acidity": "ACIDITY",
+      "wine.t.harvest": "HARVEST",
+      "wine.t.bottles": "BOTTLES",
+      "wine1.badge": "Red · Stellenbosch · International Influence",
+      "wine1.eyebrow": "First Wine · Immediate Presence · Commercial Flexibility",
+      "wine1.subtitle": "Red · Shiraz · Cabernet Sauvignon · Mourvèdre",
+      "wine1.impression": "Nip Slip is an iconic red blend that captures a transformative journey — from playful youth to graceful sophistication. Built on a Stellenbosch core with international varietal influence, it shows ripe red and black fruit, subtle spice, a silky entry, structured mid-palate and polished tannins. <em>The wine with the greatest commercial flexibility within this proposal</em> — leaving room for incentives, activation, staff engagement and volume-driven performance.",
+      "wine1.origin": "Stellenbosch core · International influence",
+      "wine1.style": "Deep ruby · Ripe fruit · Subtle spice",
+      "wine1.palate": "Silky · Structured · Polished tannin",
+      "wine1.position": "A versatile, charismatic red — fruit, structure and elegance for gastronomic service, with the immediacy needed to perform naturally on table.",
+      "wine2.badge": "White · Chenin Blanc · Viognier · Chardonnay",
+      "wine2.eyebrow": "Second Wine · A White With Real Depth",
+      "wine2.subtitle": "Chenin Blanc 60% · Viognier 30% · Chardonnay 10%",
+      "wine2.impression": "A white of serious ambition — built not to dazzle through easy freshness, but through depth, texture and evolution. Citrus and peach lift on the nose, with vanilla and pronounced lees character. The Chenin gives spine and structure; the Viognier adds floral lift and an enveloping mouthfeel. <em>This is not a fragile white. It does not fade between vintages — it holds, evolves and gains depth.</em> A natural candidate for high-rotation signature white without ever compromising elegance.",
+      "wine2.profile": "Deep · Textured · Floral · Citrus · Lees",
+      "wine2.style": "Tropical fruit · Integrated acidity & alcohol",
+      "wine2.pairing": "Fresh seafood · Mussels · Duck",
+      "wine2.position": "A gastronomic white with journey and memory — capable of holding a table that asks for more than a conventional young white.",
+      "wine3.badge": "Red · A True Wine of the World · Limited Edition",
+      "wine3.eyebrow": "Third Wine · Presence & Prestige",
+      "wine3.subtitle": "A True Wine of the World · Limited Edition",
+      "wine3.impression": "Pangea is conceived from an extraordinary idea: <em>a true Wine of the World</em>, assembled from noble varieties grown in some of the planet's greatest origins. Cabernet Sauvignon from Napa Valley, Merlot from Right Bank Bordeaux, Petit Verdot from Spain, Cabernet Franc from South Africa and Malbec from Argentina. Complex yet seamless. Layered yet restrained. Not designed for volume — designed for presence and prestige. Its role is to elevate the entire wine program by association.",
+      "wine3.character": "Complex · Sophisticated · Enveloping",
+      "wine3.role": "Collection bottle · Conversation · Prestige",
+      "wine3.position": "Rare, international, memorable. Its greatness lies in turning distinct terroirs and noble varieties into one coherent, serious bottle of extraordinary presence.",
+      "photo4.text": "A wine conceived as international narrative, collection and conversation.",
+      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
+      "wine4.eyebrow": "Fourth Wine · The Perfect Summer Rosé",
+      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
+      "wine4.impression": "A delicate, refreshing and dry rosé with a pale coral colour. Undertones of apple and yellow peach combine with refined minerality and pure fruit. Integrated acidity plays against the sweetness of the fruit components to give a balanced, perfectly weighted wine. <em>A long lingering finish that leaves you wanting more</em> — the natural rosé for daytime, terrace and warm-weather service.",
+      "wine4.colour": "Pale coral · Luminous",
+      "wine4.profile": "Apple · Yellow peach · Mineral",
+      "wine4.pairing": "Daytime · Terrace · Light cuisine",
+      "wine4.position": "The signature rosé of warm weather: balanced, weightless, luminous. Strong rotation and broad guest appeal without compromising refinement.",
+      "wine5.badge": "White · Sauvignon Blanc · Lightly Oaked",
+      "wine5.eyebrow": "Fifth Wine · Mineral Precision",
+      "wine5.subtitle": "100% Sauvignon Blanc · Lightly oaked · Site-driven",
+      "wine5.impression": "A unique Sauvignon Blanc, a reflection of site and soil. South-facing 16-year-old vineyards sitting 175m above sea level, on deep Hutton and Clovelly soils. Lightly oaked, displaying minerality with well-balanced natural acids — combining herbaceous notes with integrated tropical fruit: lime zest, green apple and pineapple. <em>An elegant freshness with a long, crisp finish</em> — perfect with fresh oysters, grilled fish, Asian-inspired dishes and sushi.",
+      "wine5.site": "175m altitude · Hutton & Clovelly soils",
+      "wine5.profile": "Lime zest · Green apple · Pineapple",
+      "wine5.pairing": "Oysters · Grilled fish · Sushi · Asian",
+      "wine5.position": "A precise, site-driven white with crystalline finish — for raw bar, sushi service and the moments where elegance is measured by clarity.",
+      "incentives.tag": "Incentives & Flexibility",
+      "incentives.title": "No fixed structures",
+      "incentives.sub": "First we identify which wines and brands are of real interest. From there, the commercial framework is built together.",
+      "incentives.c1.title": "Service-staff cashback",
+      "incentives.c1.text": "2.5% cashback for service staff based on menu price — a direct, motivating mechanic that aligns the floor team with the wines they recommend.",
+      "incentives.c2.title": "Venue-level rebates",
+      "incentives.c2.text": "Sales-based rebates structured around real performance — a transparent mechanism that grows in value as the partnership grows.",
+      "incentives.c3.title": "Experience-led rewards",
+      "incentives.c3.text": "Private tastings, professional wine training, experiential rewards and curated wine cases — built for the people who carry the program every day.",
+      "incentives.c4.title": "An open conversation",
+      "incentives.c4.text": "There are no fixed structures. Every framework — commercial, operational, creative — is shaped to fit the venue, not imposed onto it.",
+      "horizon.tag": "A Shared Horizon",
+      "horizon.title": "Built together, not imposed",
+      "horizon.sub": "The strongest wine programs grow in stages. This is how we see ours unfolding with you.",
+      "horizon.s1.stage": "Short term",
+      "horizon.s1.title": "Introduce",
+      "horizon.s1.text": "Establish a coherent, refined wine presence that integrates naturally into the venue experience — without disruption to existing rhythm or service.",
+      "horizon.s2.stage": "Mid term",
+      "horizon.s2.title": "Consolidate",
+      "horizon.s2.text": "Optimise rotation, refine the selection and adjust strategy based on real performance and guest response — together, with transparent data.",
+      "horizon.s3.stage": "Long term",
+      "horizon.s3.title": "Build & grow",
+      "horizon.s3.text": "A stable wine partnership, special projects, exclusive allocations — and a relationship built on trust, shared standards and shared ambition.",
+      "closing.eyebrow": "Closing Thought",
+      "closing.quote": "A great selection does not only elevate the list.<br>It elevates <em>memory,</em> conversation,<br>and the perception of the place itself.",
+      "closing.sig": "This is not a closed proposal — it is an open conversation.",
+      "closing.contact": "To begin the conversation",
+      "footer.tag": "Crafted with respect for the table, the team and the guest."
+    },
+    de: {
+      "cover.eyebrow": "Wein-Partnerschaftsangebot",
+      "cover.title": "Eine kuratierte<br><em>Weinerfahrung</em>",
+      "cover.sub": "Fünf Weine mit Charakter, Tiefe und einer klaren Lesart zeitgenössischen Luxus — gebaut für Ihr Publikum, Ihren Rhythmus, Ihre Positionierung.",
+      "cover.meta.1": "Kuratierte Auswahl",
+      "cover.meta.2": "Internationale Herkunft",
+      "cover.scroll": "Entdecken",
+      "partners.eyebrow": "In Zusammenarbeit mit",
+      "partners.note": "Unser erstes Jahr, in dem wir diese kuratierte Auswahl in Europa erweitern — diese Weine in Umgebungen platzieren, in denen sie verstanden, serviert und geschätzt werden.",
+      "manifesto.tag": "Unser Ansatz",
+      "manifesto.headline": "Wein ist kein Accessoire.<br>Er ist <em>Atmosphäre.</em><br>Er ist <em>Erinnerung.</em><br>Er ist <em>Markensprache.</em>",
+      "manifesto.strike": "Dieses Angebot will nicht ein weiterer Lieferant werden.",
+      "manifesto.true": "Es geht darum, ein Weinpartner zu werden.",
+      "manifesto.cell1.title": "Partnerschaft, keine Transaktion",
+      "manifesto.cell1.text": "Eine Beziehung, die um Ihren Rhythmus, Ihr Tempo, Ihr Publikum und Ihre internationale Positionierung herum aufgebaut wird. Die Absicht ist nicht, Flaschen zu platzieren. Es geht darum, Sie über die Zeit zu begleiten, gemeinsam zu verfeinern und zu wachsen.",
+      "manifesto.cell2.title": "Eine Sichtweise, keine Liste",
+      "manifesto.cell2.text": "Jeder Wein wurde aus einem präzisen Grund gewählt: Präsenz, Textur, Entwicklung, Seltenheit, Dialog. Eine kohärente Lesart von Stil und Identität — kein Inventar von Optionen.",
+      "manifesto.cell3.title": "Ein offener, sich entwickelnder Rahmen",
+      "manifesto.cell3.text": "Nichts ist starr. Auswahl, Struktur, Anreize — alles wird gemeinsam aufgebaut, basierend auf realer Performance und Gästeresonanz, in einem ehrlichen Dialog.",
+      "origins.tag": "Eine globale Vision des Weins",
+      "origins.title": "Handverlesen aus einigen der ausdrucksstärksten Regionen der Welt",
+      "origins.sub": "Nicht an eine Denomination gebunden — gebunden an Harmonie im Glas.",
+      "origins.country.usa": "USA",
+      "origins.country.fra": "Frankreich",
+      "origins.country.esp": "Spanien",
+      "origins.country.zaf": "Südafrika",
+      "origins.country.arg": "Argentinien",
+      "photo1.title": "Ein Vorschlag für Atmosphäre, Service und Erinnerung",
+      "photo1.text": "Keine Weinkarte. Eine Lesart von Stil, Positionierung und Erfahrung.",
+      "creator.tag": "Die Hand hinter der Vision",
+      "creator.role": "Crafting · Direction · Weinidentität",
+      "creator.copy1": "Geboren in Kanada und aufgewachsen in Südafrika, hat Travis Braithwaite ein Werk geprägt, das von ästhetischer Sensibilität, internationalem Ehrgeiz und einem präzisen Verständnis dafür definiert wird, wie man Weine mit Identität, Tiefe und der Fähigkeit, Menschen zu bewegen, baut.",
+      "creator.copy2": "Er arbeitet nicht nach Denomination. Er arbeitet nach <em>Harmonie im Glas</em> — und diese Philosophie definiert jede Flasche dieses Angebots.",
+      "creator.cred1": "Ein weltweit anerkannter Weinmacher",
+      "creator.cred2": "Empfänger internationaler Auszeichnungen auf mehreren Kontinenten",
+      "creator.cred3": "Bekannt für die Beherrschung komplexer Multi-Country-Cuvées",
+      "creator.cred4": "Kreative Kraft hinter einigen der originellsten modernen Weinprojekte",
+      "creator.philosophy": "Mehr als nur Wein zu machen, behandelt Travis jedes Label als feines Bauwerk — Balance, Charakter, Reise und eine klare Idee zeitgenössischen Luxus.",
+      "photo2.title": "Die Auswahl",
+      "photo2.text": "Fünf eigenständige Lesarten von Wein: Präsenz, Textur, Seltenheit, Frische und Dialog.",
+      "wine.h.impression": "Gesamteindruck",
+      "wine.h.position": "Positionierung",
+      "wine.s.blend": "Cuvée",
+      "wine.s.origin": "Herkunft",
+      "wine.s.style": "Stil",
+      "wine.s.palate": "Gaumen",
+      "wine.s.profile": "Profil",
+      "wine.s.aging": "Stil",
+      "wine.s.pairing": "Begleitung",
+      "wine.s.character": "Charakter",
+      "wine.s.role": "Rolle",
+      "wine.s.colour": "Farbe",
+      "wine.s.variety": "Rebsorte",
+      "wine.s.site": "Lage",
+      "wine.t.acidity": "SÄURE",
+      "wine.t.harvest": "ERTRAG",
+      "wine.t.bottles": "FLASCHEN",
+      "wine1.badge": "Rotwein · Stellenbosch · Internationaler Einfluss",
+      "wine1.eyebrow": "Erster Wein · Sofortige Präsenz · Kommerzielle Flexibilität",
+      "wine1.subtitle": "Rotwein · Shiraz · Cabernet Sauvignon · Mourvèdre",
+      "wine1.impression": "Nip Slip ist eine ikonische Rotweincuvée, die eine Wandlung einfängt — von verspielter Jugend zu anmutiger Raffinesse. Auf einem Stellenbosch-Kern mit internationalem Sorteneinfluss aufgebaut, zeigt er reife rote und schwarze Frucht, dezente Würze, einen seidigen Auftakt, einen strukturierten Mittelgaumen und polierte Tannine. <em>Der Wein mit der größten kommerziellen Flexibilität dieses Angebots</em> — Raum für Anreize, Aktivierung, Mitarbeiterengagement und volumengetriebene Leistung.",
+      "wine1.origin": "Stellenbosch-Kern · Internationaler Einfluss",
+      "wine1.style": "Tiefes Rubin · Reife Frucht · Dezente Würze",
+      "wine1.palate": "Seidig · Strukturiert · Poliertes Tannin",
+      "wine1.position": "Ein vielseitiger, charismatischer Rotwein — Frucht, Struktur und Eleganz für gastronomischen Service, mit der nötigen Unmittelbarkeit, um auf dem Tisch natürlich zu wirken.",
+      "wine2.badge": "Weißwein · Chenin Blanc · Viognier · Chardonnay",
+      "wine2.eyebrow": "Zweiter Wein · Ein Weißwein mit echter Tiefe",
+      "wine2.subtitle": "Chenin Blanc 60% · Viognier 30% · Chardonnay 10%",
+      "wine2.impression": "Ein Weißwein mit ernsthaftem Anspruch — nicht durch leichte Frische blendend, sondern durch Tiefe, Textur und Entwicklung. Zitrus und Pfirsich in der Nase, mit Vanille und ausgeprägtem Hefekontakt. Der Chenin gibt Rückgrat und Struktur; der Viognier fügt florale Höhe und ein umhüllendes Mundgefühl hinzu. <em>Dies ist kein zerbrechlicher Weißwein. Er verblasst nicht zwischen Jahrgängen — er hält, entwickelt sich, gewinnt an Tiefe.</em> Ein natürlicher Kandidat für einen Signature-Weißwein in hoher Rotation, ohne je Eleganz zu opfern.",
+      "wine2.profile": "Tief · Texturiert · Floral · Zitrus · Hefe",
+      "wine2.style": "Tropische Frucht · Integrierte Säure & Alkohol",
+      "wine2.pairing": "Frische Meeresfrüchte · Muscheln · Ente",
+      "wine2.position": "Ein gastronomischer Weißwein mit Reise und Erinnerung — fähig, einen Tisch zu halten, der mehr verlangt als einen konventionellen jungen Weißwein.",
+      "wine3.badge": "Rotwein · Ein wahrer Wein der Welt · Limitierte Edition",
+      "wine3.eyebrow": "Dritter Wein · Präsenz & Prestige",
+      "wine3.subtitle": "Ein wahrer Wein der Welt · Limitierte Edition",
+      "wine3.impression": "Pangea entstammt einer außergewöhnlichen Idee: <em>ein wahrer Wein der Welt</em>, zusammengesetzt aus edlen Sorten aus einigen der größten Ursprünge des Planeten. Cabernet Sauvignon aus Napa Valley, Merlot aus dem Right Bank Bordeaux, Petit Verdot aus Spanien, Cabernet Franc aus Südafrika und Malbec aus Argentinien. Komplex und doch nahtlos. Geschichtet und doch zurückhaltend. Nicht für Volumen entworfen — für Präsenz und Prestige. Seine Rolle ist es, das gesamte Weinprogramm durch Assoziation zu erheben.",
+      "wine3.character": "Komplex · Raffiniert · Umhüllend",
+      "wine3.role": "Sammlerflasche · Gespräch · Prestige",
+      "wine3.position": "Selten, international, unvergesslich. Seine Größe liegt darin, unterschiedliche Terroirs und edle Sorten in eine kohärente, ernsthafte Flasche von außergewöhnlicher Präsenz zu verwandeln.",
+      "photo4.text": "Ein Wein, konzipiert als internationale Erzählung, Sammlung und Gespräch.",
+      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
+      "wine4.eyebrow": "Vierter Wein · Der perfekte Sommerrosé",
+      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
+      "wine4.impression": "Ein zarter, erfrischender und trockener Rosé mit blassem Korallton. Untertöne von Apfel und gelbem Pfirsich verbinden sich mit verfeinerter Mineralität und reiner Frucht. Integrierte Säure spielt gegen die Süße der Fruchtkomponenten und ergibt einen ausgewogenen, perfekt gewichteten Wein. <em>Ein langer, anhaltender Abgang, der mehr verlangen lässt</em> — der natürliche Rosé für Tagesservice, Terrasse und warmes Wetter.",
+      "wine4.colour": "Blasses Korall · Leuchtend",
+      "wine4.profile": "Apfel · Gelber Pfirsich · Mineralisch",
+      "wine4.pairing": "Tagesservice · Terrasse · Leichte Küche",
+      "wine4.position": "Der Signature-Rosé für warmes Wetter: ausgewogen, schwerelos, leuchtend. Starke Rotation und breite Gästeresonanz, ohne Verfeinerung zu opfern.",
+      "wine5.badge": "Weißwein · Sauvignon Blanc · Leicht im Holz",
+      "wine5.eyebrow": "Fünfter Wein · Mineralische Präzision",
+      "wine5.subtitle": "100% Sauvignon Blanc · Leicht im Holz · Lagengeprägt",
+      "wine5.impression": "Ein einzigartiger Sauvignon Blanc, ein Spiegel von Lage und Boden. Südexponierte 16 Jahre alte Reben auf 175m über dem Meer, auf tiefen Hutton- und Clovelly-Böden. Leicht im Holz ausgebaut, zeigt Mineralität mit gut ausbalancierten natürlichen Säuren — verbindet kräuterige Noten mit integrierter tropischer Frucht: Limettenschale, grüner Apfel und Ananas. <em>Eine elegante Frische mit langem, knackigem Abgang</em> — perfekt zu frischen Austern, gegrilltem Fisch, asiatisch inspirierten Gerichten und Sushi.",
+      "wine5.site": "175m Höhe · Hutton- & Clovelly-Böden",
+      "wine5.profile": "Limettenschale · Grüner Apfel · Ananas",
+      "wine5.pairing": "Austern · Gegrillter Fisch · Sushi · Asiatisch",
+      "wine5.position": "Ein präziser, lagengeprägter Weißwein mit kristallinem Abgang — für Raw Bar, Sushi-Service und Momente, in denen Eleganz an Klarheit gemessen wird.",
+      "incentives.tag": "Anreize & Flexibilität",
+      "incentives.title": "Keine starren Strukturen",
+      "incentives.sub": "Zuerst identifizieren wir, welche Weine und Marken von echtem Interesse sind. Von dort wird der kommerzielle Rahmen gemeinsam aufgebaut.",
+      "incentives.c1.title": "Cashback für Servicemitarbeiter",
+      "incentives.c1.text": "2,5% Cashback für Servicemitarbeiter basierend auf dem Menüpreis — eine direkte, motivierende Mechanik, die das Floor-Team mit den empfohlenen Weinen ausrichtet.",
+      "incentives.c2.title": "Rabatte auf Venue-Ebene",
+      "incentives.c2.text": "Verkaufsbasierte Rabatte, strukturiert um reale Performance — ein transparenter Mechanismus, der mit der Partnerschaft an Wert gewinnt.",
+      "incentives.c3.title": "Erlebnisorientierte Belohnungen",
+      "incentives.c3.text": "Private Verkostungen, professionelle Weinschulungen, erlebnisorientierte Belohnungen und kuratierte Weinkisten — gebaut für die Menschen, die das Programm täglich tragen.",
+      "incentives.c4.title": "Ein offenes Gespräch",
+      "incentives.c4.text": "Es gibt keine starren Strukturen. Jeder Rahmen — kommerziell, operativ, kreativ — wird so geformt, dass er zum Veranstaltungsort passt, nicht ihm aufgezwungen.",
+      "horizon.tag": "Ein gemeinsamer Horizont",
+      "horizon.title": "Gemeinsam aufgebaut, nicht aufgezwungen",
+      "horizon.sub": "Die stärksten Weinprogramme wachsen in Etappen. So sehen wir unseres mit Ihnen wachsen.",
+      "horizon.s1.stage": "Kurzfristig",
+      "horizon.s1.title": "Einführen",
+      "horizon.s1.text": "Eine kohärente, verfeinerte Weinpräsenz etablieren, die sich natürlich in das Erlebnis des Veranstaltungsortes einfügt — ohne den bestehenden Rhythmus oder Service zu stören.",
+      "horizon.s2.stage": "Mittelfristig",
+      "horizon.s2.title": "Konsolidieren",
+      "horizon.s2.text": "Rotation optimieren, Auswahl verfeinern und Strategie auf Basis realer Performance und Gästeresonanz anpassen — gemeinsam, mit transparenten Daten.",
+      "horizon.s3.stage": "Langfristig",
+      "horizon.s3.title": "Aufbauen & wachsen",
+      "horizon.s3.text": "Eine stabile Weinpartnerschaft, Sonderprojekte, exklusive Allokationen — und eine Beziehung, die auf Vertrauen, gemeinsamen Standards und gemeinsamem Anspruch aufgebaut ist.",
+      "closing.eyebrow": "Schlussgedanke",
+      "closing.quote": "Eine große Auswahl erhebt nicht nur die Karte.<br>Sie erhebt <em>Erinnerung,</em> Gespräch<br>und die Wahrnehmung des Ortes selbst.",
+      "closing.sig": "Dies ist kein abgeschlossenes Angebot — es ist ein offenes Gespräch.",
+      "closing.contact": "Um das Gespräch zu beginnen",
+      "footer.tag": "Mit Respekt für den Tisch, das Team und den Gast gefertigt."
+    },
+    fr: {
+      "cover.eyebrow": "Proposition de Partenariat Vinicole",
+      "cover.title": "Une expérience<br>vinicole <em>raffinée</em>",
+      "cover.sub": "Cinq vins au caractère affirmé, à la profondeur réelle, et à une lecture claire du luxe contemporain — pensés pour votre clientèle, votre rythme, votre positionnement.",
+      "cover.meta.1": "Sélection signée",
+      "cover.meta.2": "Origines internationales",
+      "cover.scroll": "Découvrir",
+      "partners.eyebrow": "En collaboration avec",
+      "partners.note": "Notre première année à étendre cette sélection en Europe — placer ces vins dans des environnements où ils seront compris, servis et appréciés à leur juste valeur.",
+      "manifesto.tag": "Notre Approche",
+      "manifesto.headline": "Le vin n'est pas un accessoire.<br>Il est <em>atmosphère.</em><br>Il est <em>mémoire.</em><br>Il est <em>langage de marque.</em>",
+      "manifesto.strike": "Cette proposition n'est pas celle d'un fournisseur de plus.",
+      "manifesto.true": "C'est celle d'un partenaire vin.",
+      "manifesto.cell1.title": "Un partenariat, pas une transaction",
+      "manifesto.cell1.text": "Une relation construite autour de votre rythme, de votre clientèle et de votre positionnement international. L'intention n'est pas de placer des bouteilles, mais de vous accompagner dans la durée, en affinant et en grandissant ensemble.",
+      "manifesto.cell2.title": "Un point de vue, pas une liste",
+      "manifesto.cell2.text": "Chaque vin a été choisi pour une raison précise : présence, texture, évolution, rareté, dialogue. Une lecture cohérente du style et de l'identité, et non un inventaire d'options.",
+      "manifesto.cell3.title": "Un cadre ouvert et évolutif",
+      "manifesto.cell3.text": "Rien n'est figé. La sélection, la structure, les incitations — tout se construit ensemble, à partir de la performance réelle et du retour client, dans une conversation honnête.",
+      "origins.tag": "Une vision globale du vin",
+      "origins.title": "Sélectionnés à la main parmi les régions les plus expressives au monde",
+      "origins.sub": "Non liés à une seule appellation — liés à l'harmonie dans le verre.",
+      "origins.country.usa": "États-Unis",
+      "origins.country.fra": "France",
+      "origins.country.esp": "Espagne",
+      "origins.country.zaf": "Afrique du Sud",
+      "origins.country.arg": "Argentine",
+      "photo1.title": "Une proposition pour l'atmosphère, le service et la mémoire",
+      "photo1.text": "Pas une carte des vins. Une lecture du style, du positionnement et de l'expérience.",
+      "creator.tag": "La main derrière la vision",
+      "creator.role": "Création · Direction · Identité du vin",
+      "creator.copy1": "Né au Canada et grandi en Afrique du Sud, Travis Braithwaite a façonné une œuvre définie par une sensibilité esthétique, une ambition internationale et une compréhension précise de la manière de construire des vins dotés d'identité, de profondeur et de la capacité d'émouvoir.",
+      "creator.copy2": "Il ne travaille pas par appellation. Il travaille par <em>harmonie dans le verre</em> — et cette philosophie définit chaque bouteille de cette proposition.",
+      "creator.cred1": "Vinificateur reconnu mondialement",
+      "creator.cred2": "Récompensé par des distinctions internationales sur plusieurs continents",
+      "creator.cred3": "Réputé pour la maîtrise d'assemblages complexes multi-pays",
+      "creator.cred4": "Force créative derrière certains des projets vinicoles modernes les plus originaux",
+      "creator.philosophy": "Plus que de faire du vin, Travis traite chaque étiquette comme une œuvre d'orfèvrerie — équilibre, caractère, parcours et une idée claire du luxe contemporain.",
+      "photo2.title": "La sélection",
+      "photo2.text": "Cinq lectures distinctes du vin : présence, texture, rareté, fraîcheur et dialogue.",
+      "wine.h.impression": "Impression générale",
+      "wine.h.position": "Positionnement",
+      "wine.s.blend": "Assemblage",
+      "wine.s.origin": "Origine",
+      "wine.s.style": "Style",
+      "wine.s.palate": "Bouche",
+      "wine.s.profile": "Profil",
+      "wine.s.aging": "Style",
+      "wine.s.pairing": "Accord",
+      "wine.s.character": "Caractère",
+      "wine.s.role": "Rôle",
+      "wine.s.colour": "Couleur",
+      "wine.s.variety": "Cépage",
+      "wine.s.site": "Site",
+      "wine.t.acidity": "ACIDITÉ",
+      "wine.t.harvest": "RENDEMENT",
+      "wine.t.bottles": "BOUTEILLES",
+      "wine1.badge": "Rouge · Stellenbosch · Influence internationale",
+      "wine1.eyebrow": "Premier vin · Présence immédiate · Flexibilité commerciale",
+      "wine1.subtitle": "Rouge · Shiraz · Cabernet Sauvignon · Mourvèdre",
+      "wine1.impression": "Nip Slip est un assemblage rouge iconique qui capture une transformation — de la jeunesse joueuse à la sophistication gracieuse. Bâti sur un cœur de Stellenbosch avec une influence variétale internationale, il déploie des fruits rouges et noirs mûrs, des épices subtiles, une attaque soyeuse, un milieu de bouche structuré et des tanins polis. <em>Le vin offrant la plus grande flexibilité commerciale de cette proposition</em> — laissant place aux incitations, aux activations, à l'engagement des équipes et à une performance volumique.",
+      "wine1.origin": "Cœur Stellenbosch · Influence internationale",
+      "wine1.style": "Rubis profond · Fruits mûrs · Épices subtiles",
+      "wine1.palate": "Soyeux · Structuré · Tanin poli",
+      "wine1.position": "Un rouge polyvalent et charismatique — fruit, structure et élégance pour un service gastronomique, avec l'immédiateté nécessaire pour fonctionner naturellement à table.",
+      "wine2.badge": "Blanc · Chenin Blanc · Viognier · Chardonnay",
+      "wine2.eyebrow": "Deuxième vin · Un blanc à la profondeur réelle",
+      "wine2.subtitle": "Chenin Blanc 60% · Viognier 30% · Chardonnay 10%",
+      "wine2.impression": "Un blanc d'ambition sérieuse — qui ne séduit pas par une fraîcheur facile, mais par la profondeur, la texture et l'évolution. Le nez offre agrumes et pêche, avec vanille et caractère marqué de lies. Le Chenin donne la colonne vertébrale ; le Viognier ajoute du floral et une bouche enveloppante. <em>Ce n'est pas un blanc fragile. Il ne s'efface pas d'un millésime à l'autre — il tient, évolue, gagne en profondeur.</em> Un candidat naturel pour un blanc signature à forte rotation, sans jamais compromettre l'élégance.",
+      "wine2.profile": "Profond · Texturé · Floral · Agrumes · Lies",
+      "wine2.style": "Fruits tropicaux · Acidité & alcool intégrés",
+      "wine2.pairing": "Fruits de mer · Moules · Canard",
+      "wine2.position": "Un blanc gastronomique avec parcours et mémoire — capable de tenir une table qui demande plus qu'un blanc jeune conventionnel.",
+      "wine3.badge": "Rouge · Un véritable Vin du Monde · Édition limitée",
+      "wine3.eyebrow": "Troisième vin · Présence & Prestige",
+      "wine3.subtitle": "Un véritable Vin du Monde · Édition limitée",
+      "wine3.impression": "Pangea naît d'une idée extraordinaire : <em>un véritable Vin du Monde</em>, assemblé à partir de cépages nobles cultivés dans certains des plus grands terroirs de la planète. Cabernet Sauvignon de Napa Valley, Merlot de la Rive Droite de Bordeaux, Petit Verdot d'Espagne, Cabernet Franc d'Afrique du Sud et Malbec d'Argentine. Complexe mais cohérent. Stratifié mais retenu. Pas conçu pour le volume — conçu pour la présence et le prestige. Son rôle est d'élever tout le programme vin par association.",
+      "wine3.character": "Complexe · Raffiné · Enveloppant",
+      "wine3.role": "Bouteille de collection · Conversation · Prestige",
+      "wine3.position": "Rare, international, mémorable. Sa grandeur réside dans la transformation de terroirs distincts et de cépages nobles en une seule bouteille cohérente, sérieuse, à la présence extraordinaire.",
+      "photo4.text": "Un vin conçu comme récit international, collection et conversation.",
+      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
+      "wine4.eyebrow": "Quatrième vin · Le rosé d'été parfait",
+      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
+      "wine4.impression": "Un rosé délicat, rafraîchissant et sec, à la robe corail pâle. Notes d'évolution de pomme et pêche jaune se combinent à une minéralité raffinée et une pureté de fruit. L'acidité intégrée joue avec la douceur des composantes fruitées pour offrir un vin équilibré, parfaitement pondéré. <em>Une finale longue et persistante qui en redemande</em> — le rosé naturel pour le service de jour, terrasse et beaux jours.",
+      "wine4.colour": "Corail pâle · Lumineux",
+      "wine4.profile": "Pomme · Pêche jaune · Minéral",
+      "wine4.pairing": "Service de jour · Terrasse · Cuisine légère",
+      "wine4.position": "Le rosé signature des beaux jours : équilibré, sans poids, lumineux. Forte rotation et large adhésion sans compromettre la finesse.",
+      "wine5.badge": "Blanc · Sauvignon Blanc · Légèrement boisé",
+      "wine5.eyebrow": "Cinquième vin · Précision minérale",
+      "wine5.subtitle": "100% Sauvignon Blanc · Légèrement boisé · Issu du terroir",
+      "wine5.impression": "Un Sauvignon Blanc unique, reflet du site et du sol. Vignes de 16 ans exposées sud à 175m d'altitude, sur des sols profonds Hutton et Clovelly. Légèrement boisé, il déploie une minéralité avec des acides naturels bien équilibrés — combinant des notes herbacées avec un fruit tropical intégré : zeste de citron vert, pomme verte et ananas. <em>Une fraîcheur élégante avec une finale longue et nette</em> — parfait avec huîtres fraîches, poisson grillé, plats d'inspiration asiatique et sushi.",
+      "wine5.site": "175m d'altitude · Sols Hutton & Clovelly",
+      "wine5.profile": "Zeste de citron vert · Pomme verte · Ananas",
+      "wine5.pairing": "Huîtres · Poisson grillé · Sushi · Asiatique",
+      "wine5.position": "Un blanc précis, issu du terroir, à la finale cristalline — pour le bar à crus, le service sushi et les moments où l'élégance se mesure à la clarté.",
+      "incentives.tag": "Incitations & Flexibilité",
+      "incentives.title": "Aucune structure figée",
+      "incentives.sub": "Nous identifions d'abord quels vins et marques suscitent un réel intérêt. À partir de là, le cadre commercial se construit ensemble.",
+      "incentives.c1.title": "Cashback équipe de salle",
+      "incentives.c1.text": "2,5% de cashback pour le personnel de service basé sur le prix carte — un mécanisme direct et motivant qui aligne l'équipe avec les vins recommandés.",
+      "incentives.c2.title": "Remises au niveau de l'établissement",
+      "incentives.c2.text": "Remises basées sur les ventes, structurées autour de la performance réelle — un mécanisme transparent qui prend de la valeur à mesure que le partenariat grandit.",
+      "incentives.c3.title": "Récompenses expérientielles",
+      "incentives.c3.text": "Dégustations privées, formation professionnelle au vin, récompenses expérientielles et caisses de vin sélectionnées — pensées pour ceux qui portent le programme au quotidien.",
+      "incentives.c4.title": "Une conversation ouverte",
+      "incentives.c4.text": "Aucune structure n'est figée. Chaque cadre — commercial, opérationnel, créatif — est façonné pour s'adapter au lieu, et non lui être imposé.",
+      "horizon.tag": "Un horizon partagé",
+      "horizon.title": "Construit ensemble, non imposé",
+      "horizon.sub": "Les programmes vinicoles les plus solides grandissent par étapes. Voici comment nous voyons le nôtre se déployer avec vous.",
+      "horizon.s1.stage": "Court terme",
+      "horizon.s1.title": "Introduire",
+      "horizon.s1.text": "Établir une présence vinicole cohérente et raffinée qui s'intègre naturellement à l'expérience du lieu — sans perturber le rythme ou le service existants.",
+      "horizon.s2.stage": "Moyen terme",
+      "horizon.s2.title": "Consolider",
+      "horizon.s2.text": "Optimiser la rotation, affiner la sélection et ajuster la stratégie sur la base de la performance réelle et du retour client — ensemble, avec des données transparentes.",
+      "horizon.s3.stage": "Long terme",
+      "horizon.s3.title": "Construire & grandir",
+      "horizon.s3.text": "Un partenariat vin stable, des projets spéciaux, des allocations exclusives — et une relation bâtie sur la confiance, des standards partagés et une ambition partagée.",
+      "closing.eyebrow": "Pensée finale",
+      "closing.quote": "Une grande sélection n'élève pas seulement la carte.<br>Elle élève la <em>mémoire,</em> la conversation,<br>et la perception même du lieu.",
+      "closing.sig": "Ce n'est pas une proposition fermée — c'est une conversation ouverte.",
+      "closing.contact": "Pour entamer la conversation",
+      "footer.tag": "Conçu avec respect pour la table, l'équipe et le client."
+    },
+    it: {
+      "cover.eyebrow": "Proposta di Partnership Vinicola",
+      "cover.title": "Un'esperienza<br>enologica <em>curata</em>",
+      "cover.sub": "Cinque vini con carattere, profondità e una lettura chiara del lusso contemporaneo — costruiti attorno al vostro pubblico, al vostro ritmo, al vostro posizionamento.",
+      "cover.meta.1": "Selezione curata",
+      "cover.meta.2": "Origini internazionali",
+      "cover.scroll": "Scoprire",
+      "partners.eyebrow": "In collaborazione con",
+      "partners.note": "Il nostro primo anno per estendere questa selezione curata in Europa — collocare questi vini in ambienti dove saranno compresi, serviti e apprezzati.",
+      "manifesto.tag": "Il nostro approccio",
+      "manifesto.headline": "Il vino non è un accessorio.<br>È <em>atmosfera.</em><br>È <em>memoria.</em><br>È <em>linguaggio di marca.</em>",
+      "manifesto.strike": "Questa proposta non riguarda diventare un altro fornitore.",
+      "manifesto.true": "Riguarda diventare un partner del vino.",
+      "manifesto.cell1.title": "Una partnership, non una transazione",
+      "manifesto.cell1.text": "Una relazione costruita attorno al vostro ritmo, al vostro pubblico e al vostro posizionamento internazionale. L'intenzione non è collocare bottiglie. È accompagnarvi nel tempo, raffinando e crescendo insieme.",
+      "manifesto.cell2.title": "Un punto di vista, non una lista",
+      "manifesto.cell2.text": "Ogni vino è stato scelto per una ragione precisa: presenza, texture, evoluzione, rarità, dialogo. Una lettura coerente di stile e identità, non un inventario di opzioni.",
+      "manifesto.cell3.title": "Un quadro aperto ed evolutivo",
+      "manifesto.cell3.text": "Nulla è fisso. Selezione, struttura, incentivi — tutto si costruisce insieme, sulla base di performance reali e risposta del cliente, in conversazione onesta.",
+      "origins.tag": "Una visione globale del vino",
+      "origins.title": "Selezionati a mano tra alcune delle regioni più espressive del pianeta",
+      "origins.sub": "Non legati a una singola denominazione — legati all'armonia nel calice.",
+      "origins.country.usa": "USA",
+      "origins.country.fra": "Francia",
+      "origins.country.esp": "Spagna",
+      "origins.country.zaf": "Sudafrica",
+      "origins.country.arg": "Argentina",
+      "photo1.title": "Una proposta per atmosfera, servizio e memoria",
+      "photo1.text": "Non una lista vini. Una lettura di stile, posizionamento ed esperienza.",
+      "creator.tag": "La mano dietro la visione",
+      "creator.role": "Crafting · Direzione · Identità del vino",
+      "creator.copy1": "Nato in Canada e cresciuto in Sudafrica, Travis Braithwaite ha dato forma a un corpus di lavoro definito da sensibilità estetica, ambizione internazionale e una comprensione precisa di come costruire vini con identità, profondità e capacità di emozionare.",
+      "creator.copy2": "Non lavora per denominazione. Lavora per <em>armonia nel calice</em> — e quella filosofia definisce ogni bottiglia di questa proposta.",
+      "creator.cred1": "Un enologo di fama mondiale",
+      "creator.cred2": "Premiato a livello internazionale in molteplici continenti",
+      "creator.cred3": "Riconosciuto per la padronanza di blend complessi multi-paese",
+      "creator.cred4": "Forza creativa dietro alcuni dei progetti vinicoli moderni più originali",
+      "creator.philosophy": "Più che fare vino, Travis tratta ogni etichetta come un'opera di costruzione fine — equilibrio, carattere, percorso e un'idea chiara del lusso contemporaneo.",
+      "photo2.title": "La selezione",
+      "photo2.text": "Cinque letture distinte del vino: presenza, texture, rarità, freschezza e dialogo.",
+      "wine.h.impression": "Impressione generale",
+      "wine.h.position": "Posizionamento",
+      "wine.s.blend": "Blend",
+      "wine.s.origin": "Origine",
+      "wine.s.style": "Stile",
+      "wine.s.palate": "Palato",
+      "wine.s.profile": "Profilo",
+      "wine.s.aging": "Stile",
+      "wine.s.pairing": "Abbinamento",
+      "wine.s.character": "Carattere",
+      "wine.s.role": "Ruolo",
+      "wine.s.colour": "Colore",
+      "wine.s.variety": "Varietà",
+      "wine.s.site": "Sito",
+      "wine.t.acidity": "ACIDITÀ",
+      "wine.t.harvest": "RESA",
+      "wine.t.bottles": "BOTTIGLIE",
+      "wine1.badge": "Rosso · Stellenbosch · Influenza internazionale",
+      "wine1.eyebrow": "Primo vino · Presenza immediata · Flessibilità commerciale",
+      "wine1.subtitle": "Rosso · Shiraz · Cabernet Sauvignon · Mourvèdre",
+      "wine1.impression": "Nip Slip è un blend rosso iconico che cattura un percorso trasformativo — dalla giovinezza giocosa alla raffinatezza grazia. Costruito su un nucleo di Stellenbosch con influenza varietale internazionale, mostra frutta rossa e nera matura, spezie sottili, ingresso setoso, palato strutturato e tannini levigati. <em>Il vino con la maggiore flessibilità commerciale di questa proposta</em> — lascia spazio a incentivi, attivazione, coinvolgimento dello staff e performance di volume.",
+      "wine1.origin": "Nucleo Stellenbosch · Influenza internazionale",
+      "wine1.style": "Rubino profondo · Frutta matura · Spezia sottile",
+      "wine1.palate": "Setoso · Strutturato · Tannino levigato",
+      "wine1.position": "Un rosso versatile e carismatico — frutta, struttura ed eleganza per servizio gastronomico, con l'immediatezza necessaria per funzionare naturalmente a tavola.",
+      "wine2.badge": "Bianco · Chenin Blanc · Viognier · Chardonnay",
+      "wine2.eyebrow": "Secondo vino · Un bianco con vera profondità",
+      "wine2.subtitle": "Chenin Blanc 60% · Viognier 30% · Chardonnay 10%",
+      "wine2.impression": "Un bianco di seria ambizione — costruito non per abbagliare con una freschezza facile, ma con profondità, texture ed evoluzione. Agrumi e pesca al naso, con vaniglia e marcato carattere di feccia. Lo Chenin dà spina e struttura; il Viognier aggiunge slancio floreale e una bocca avvolgente. <em>Non è un bianco fragile. Non sbiadisce tra le annate — tiene, evolve, guadagna profondità.</em> Un candidato naturale per un bianco signature ad alta rotazione, senza mai compromettere l'eleganza.",
+      "wine2.profile": "Profondo · Texture · Floreale · Agrumi · Feccia",
+      "wine2.style": "Frutta tropicale · Acidità e alcol integrati",
+      "wine2.pairing": "Frutti di mare · Cozze · Anatra",
+      "wine2.position": "Un bianco gastronomico con percorso e memoria — capace di reggere una tavola che chiede più di un bianco giovane convenzionale.",
+      "wine3.badge": "Rosso · Un vero Vino del Mondo · Edizione limitata",
+      "wine3.eyebrow": "Terzo vino · Presenza e prestigio",
+      "wine3.subtitle": "Un vero Vino del Mondo · Edizione limitata",
+      "wine3.impression": "Pangea nasce da un'idea straordinaria: <em>un vero Vino del Mondo</em>, assemblato da varietà nobili coltivate in alcune delle origini più grandi del pianeta. Cabernet Sauvignon dalla Napa Valley, Merlot dalla Rive Droite di Bordeaux, Petit Verdot dalla Spagna, Cabernet Franc dal Sudafrica e Malbec dall'Argentina. Complesso ma armonioso. Stratificato ma trattenuto. Non progettato per il volume — progettato per la presenza e il prestigio. Il suo ruolo è elevare l'intero programma vinicolo per associazione.",
+      "wine3.character": "Complesso · Raffinato · Avvolgente",
+      "wine3.role": "Bottiglia da collezione · Conversazione · Prestigio",
+      "wine3.position": "Raro, internazionale, memorabile. La sua grandezza sta nel trasformare terroir distinti e varietà nobili in una sola bottiglia coerente, seria, di presenza straordinaria.",
+      "photo4.text": "Un vino concepito come narrativa internazionale, collezione e conversazione.",
+      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
+      "wine4.eyebrow": "Quarto vino · Il rosé estivo perfetto",
+      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
+      "wine4.impression": "Un rosé delicato, rinfrescante e secco dal colore corallo pallido. Sottoftoni di mela e pesca gialla si combinano con minerality raffinata e purezza di frutto. L'acidità integrata gioca con la dolcezza delle componenti fruttate per dare un vino equilibrato, perfettamente pesato. <em>Un finale lungo e persistente che fa desiderare ancora</em> — il rosé naturale per servizio diurno, terrazza e clima caldo.",
+      "wine4.colour": "Corallo pallido · Luminoso",
+      "wine4.profile": "Mela · Pesca gialla · Minerale",
+      "wine4.pairing": "Servizio diurno · Terrazza · Cucina leggera",
+      "wine4.position": "Il rosé signature per il clima caldo: equilibrato, leggero, luminoso. Forte rotazione e ampio appeal senza compromettere la finezza.",
+      "wine5.badge": "Bianco · Sauvignon Blanc · Leggermente in legno",
+      "wine5.eyebrow": "Quinto vino · Precisione minerale",
+      "wine5.subtitle": "100% Sauvignon Blanc · Leggermente in legno · Sito-driven",
+      "wine5.impression": "Un Sauvignon Blanc unico, riflesso di sito e suolo. Vigneti di 16 anni esposti a sud a 175m sul livello del mare, su suoli profondi Hutton e Clovelly. Leggermente affinato in legno, mostra mineralità con acidi naturali ben bilanciati — combina note erbacee con frutta tropicale integrata: scorza di lime, mela verde e ananas. <em>Una freschezza elegante con un finale lungo e nitido</em> — perfetto con ostriche fresche, pesce alla griglia, piatti di ispirazione asiatica e sushi.",
+      "wine5.site": "175m altitudine · Suoli Hutton e Clovelly",
+      "wine5.profile": "Scorza di lime · Mela verde · Ananas",
+      "wine5.pairing": "Ostriche · Pesce alla griglia · Sushi · Asiatico",
+      "wine5.position": "Un bianco preciso, sito-driven con finale cristallino — per raw bar, servizio sushi e i momenti in cui l'eleganza si misura in chiarezza.",
+      "incentives.tag": "Incentivi e flessibilità",
+      "incentives.title": "Nessuna struttura fissa",
+      "incentives.sub": "Prima identifichiamo quali vini e marchi sono di reale interesse. Da lì, il quadro commerciale si costruisce insieme.",
+      "incentives.c1.title": "Cashback per il personale di sala",
+      "incentives.c1.text": "2,5% di cashback per il personale di servizio basato sul prezzo di menu — un meccanismo diretto e motivante che allinea il team di sala con i vini raccomandati.",
+      "incentives.c2.title": "Sconti a livello di locale",
+      "incentives.c2.text": "Sconti basati sulle vendite strutturati attorno alla performance reale — un meccanismo trasparente che cresce di valore con la partnership.",
+      "incentives.c3.title": "Premi esperienziali",
+      "incentives.c3.text": "Degustazioni private, formazione professionale sul vino, premi esperienziali e casse di vino curate — pensati per chi porta il programma ogni giorno.",
+      "incentives.c4.title": "Una conversazione aperta",
+      "incentives.c4.text": "Non ci sono strutture fisse. Ogni quadro — commerciale, operativo, creativo — è plasmato per adattarsi al locale, non imposto.",
+      "horizon.tag": "Un orizzonte condiviso",
+      "horizon.title": "Costruito insieme, non imposto",
+      "horizon.sub": "I programmi vinicoli più forti crescono per fasi. Ecco come vediamo il nostro svilupparsi con voi.",
+      "horizon.s1.stage": "Breve termine",
+      "horizon.s1.title": "Introdurre",
+      "horizon.s1.text": "Stabilire una presenza vinicola coerente e raffinata che si integri naturalmente nell'esperienza del locale — senza interrompere il ritmo o il servizio esistenti.",
+      "horizon.s2.stage": "Medio termine",
+      "horizon.s2.title": "Consolidare",
+      "horizon.s2.text": "Ottimizzare la rotazione, raffinare la selezione e regolare la strategia sulla base della performance reale e della risposta del cliente — insieme, con dati trasparenti.",
+      "horizon.s3.stage": "Lungo termine",
+      "horizon.s3.title": "Costruire e crescere",
+      "horizon.s3.text": "Una partnership vinicola stabile, progetti speciali, allocazioni esclusive — e una relazione costruita su fiducia, standard condivisi e ambizione condivisa.",
+      "closing.eyebrow": "Pensiero conclusivo",
+      "closing.quote": "Una grande selezione non eleva solo la carta.<br>Eleva la <em>memoria,</em> la conversazione<br>e la percezione del luogo stesso.",
+      "closing.sig": "Questa non è una proposta chiusa — è una conversazione aperta.",
+      "closing.contact": "Per iniziare la conversazione",
+      "footer.tag": "Realizzato con rispetto per il tavolo, il team e l'ospite."
+    },
+    es: {
+      "cover.eyebrow": "Propuesta de Wine Partnership",
+      "cover.title": "Una experiencia<br>de vino <em>curada</em>",
+      "cover.sub": "Cinco vinos con carácter, profundidad y una lectura clara del lujo contemporáneo — pensados en torno a vuestra audiencia, vuestro ritmo, vuestro posicionamiento.",
+      "cover.meta.1": "Selección curada",
+      "cover.meta.2": "Orígenes internacionales",
+      "cover.scroll": "Descubrir",
+      "partners.eyebrow": "En colaboración con",
+      "partners.note": "Nuestro primer año expandiendo esta selección curada por Europa — situando estos vinos en entornos donde serán comprendidos, servidos y valorados como merecen.",
+      "manifesto.tag": "Nuestro enfoque",
+      "manifesto.headline": "El vino no es un accesorio.<br>Es <em>atmósfera.</em><br>Es <em>memoria.</em><br>Es <em>lenguaje de marca.</em>",
+      "manifesto.strike": "Esta propuesta no se trata de convertirnos en otro proveedor.",
+      "manifesto.true": "Se trata de convertirnos en un partner del vino.",
+      "manifesto.cell1.title": "Una alianza, no una transacción",
+      "manifesto.cell1.text": "Una relación construida en torno a vuestro ritmo, vuestra audiencia y vuestro posicionamiento internacional. La intención no es colocar botellas. Es acompañaros en el tiempo, refinando y creciendo juntos.",
+      "manifesto.cell2.title": "Un punto de vista, no una lista",
+      "manifesto.cell2.text": "Cada vino ha sido elegido por una razón precisa: presencia, textura, evolución, rareza, diálogo. Una lectura coherente de estilo e identidad, no un inventario de opciones.",
+      "manifesto.cell3.title": "Un marco abierto y en evolución",
+      "manifesto.cell3.text": "Nada está cerrado. La selección, la estructura, los incentivos — todo se construye juntos, sobre rendimiento real y respuesta del cliente, en conversación honesta.",
+      "origins.tag": "Una visión global del vino",
+      "origins.title": "Seleccionados a mano de algunas de las regiones más expresivas del planeta",
+      "origins.sub": "No atados a una sola denominación — atados a la armonía en la copa.",
+      "origins.country.usa": "EE.UU.",
+      "origins.country.fra": "Francia",
+      "origins.country.esp": "España",
+      "origins.country.zaf": "Sudáfrica",
+      "origins.country.arg": "Argentina",
+      "photo1.title": "Una propuesta para atmósfera, servicio y memoria",
+      "photo1.text": "No es una carta de vinos. Es una lectura de estilo, posicionamiento y experiencia.",
+      "creator.tag": "La mano detrás de la visión",
+      "creator.role": "Crafting · Dirección · Identidad de vino",
+      "creator.copy1": "Nacido en Canadá y criado en Sudáfrica, Travis Braithwaite ha dado forma a un cuerpo de trabajo definido por sensibilidad estética, ambición internacional y una comprensión muy precisa de cómo construir vinos con identidad, profundidad y capacidad de emocionar.",
+      "creator.copy2": "No trabaja por denominación. Trabaja por <em>armonía en la copa</em> — y esa filosofía define cada botella dentro de esta propuesta.",
+      "creator.cred1": "Un enólogo aclamado mundialmente",
+      "creator.cred2": "Premiado internacionalmente en múltiples continentes",
+      "creator.cred3": "Reconocido por dominar blends complejos multi-país",
+      "creator.cred4": "Fuerza creativa detrás de algunos de los proyectos de vino moderno más originales",
+      "creator.philosophy": "Más que elaborar vino, Travis trabaja cada etiqueta como una obra de construcción fina — equilibrio, carácter, recorrido y una idea muy clara de lujo contemporáneo.",
+      "photo2.title": "La selección",
+      "photo2.text": "Cinco lecturas distintas del vino: presencia, textura, rareza, frescura y diálogo.",
+      "wine.h.impression": "Impresión general",
+      "wine.h.position": "Posicionamiento",
+      "wine.s.blend": "Blend",
+      "wine.s.origin": "Origen",
+      "wine.s.style": "Estilo",
+      "wine.s.palate": "Boca",
+      "wine.s.profile": "Perfil",
+      "wine.s.aging": "Estilo",
+      "wine.s.pairing": "Maridaje",
+      "wine.s.character": "Carácter",
+      "wine.s.role": "Rol",
+      "wine.s.colour": "Color",
+      "wine.s.variety": "Variedad",
+      "wine.s.site": "Sitio",
+      "wine.t.acidity": "ACIDEZ",
+      "wine.t.harvest": "RENDIMIENTO",
+      "wine.t.bottles": "BOTELLAS",
+      "wine1.badge": "Tinto · Stellenbosch · Influencia internacional",
+      "wine1.eyebrow": "Primer vino · Presencia inmediata · Flexibilidad comercial",
+      "wine1.subtitle": "Tinto · Shiraz · Cabernet Sauvignon · Mourvèdre",
+      "wine1.impression": "Nip Slip es un blend tinto icónico que captura un viaje transformador — desde la juventud lúdica hasta la sofisticación elegante. Construido sobre un núcleo de Stellenbosch con influencia varietal internacional, muestra fruta roja y negra madura, especia sutil, entrada sedosa, paladar estructurado y taninos pulidos. <em>El vino con mayor flexibilidad comercial dentro de esta propuesta</em> — deja espacio para incentivos, activaciones, engagement de equipo y rendimiento por volumen.",
+      "wine1.origin": "Núcleo Stellenbosch · Influencia internacional",
+      "wine1.style": "Rubí profundo · Fruta madura · Especia sutil",
+      "wine1.palate": "Sedoso · Estructurado · Tanino pulido",
+      "wine1.position": "Un tinto versátil y carismático — fruta, estructura y elegancia para servicio gastronómico, con la inmediatez necesaria para funcionar con naturalidad en mesa.",
+      "wine2.badge": "Blanco · Chenin Blanc · Viognier · Chardonnay",
+      "wine2.eyebrow": "Segundo vino · Un blanco con profundidad real",
+      "wine2.subtitle": "Chenin Blanc 60% · Viognier 30% · Chardonnay 10%",
+      "wine2.impression": "Un blanco de ambición seria — construido no para deslumbrar por frescura fácil, sino por profundidad, textura y evolución. Cítricos y melocotón en nariz, con vainilla y marcado carácter de lías. El Chenin aporta columna y estructura; el Viognier suma elevación floral y boca envolvente. <em>No es un blanco frágil. No se desvanece entre añadas — aguanta, evoluciona, gana profundidad.</em> Candidato natural para blanco signature de alta rotación, sin comprometer jamás la elegancia.",
+      "wine2.profile": "Profundo · Texturado · Floral · Cítrico · Lías",
+      "wine2.style": "Fruta tropical · Acidez y alcohol integrados",
+      "wine2.pairing": "Marisco fresco · Mejillones · Pato",
+      "wine2.position": "Un blanco gastronómico con recorrido y memoria — capaz de sostener una mesa que pide más que un blanco joven convencional.",
+      "wine3.badge": "Tinto · Un auténtico Vino del Mundo · Edición limitada",
+      "wine3.eyebrow": "Tercer vino · Presencia y prestigio",
+      "wine3.subtitle": "Un auténtico Vino del Mundo · Edición limitada",
+      "wine3.impression": "Pangea nace de una idea extraordinaria: <em>un auténtico Vino del Mundo</em>, ensamblado a partir de variedades nobles cultivadas en algunos de los grandes orígenes del planeta. Cabernet Sauvignon de Napa Valley, Merlot de Right Bank Bordeaux, Petit Verdot de España, Cabernet Franc de Sudáfrica y Malbec de Argentina. Complejo y a la vez sin costuras. Estratificado y a la vez contenido. No diseñado para volumen — diseñado para presencia y prestigio. Su rol es elevar el programa de vino entero por asociación.",
+      "wine3.character": "Complejo · Sofisticado · Envolvente",
+      "wine3.role": "Botella de colección · Conversación · Prestigio",
+      "wine3.position": "Raro, internacional, memorable. Su grandeza está en convertir terroirs distintos y variedades nobles en una sola botella coherente, seria, de presencia extraordinaria.",
+      "photo4.text": "Un vino concebido como relato internacional, colección y conversación.",
+      "wine4.badge": "Rosado · Cinsault · Garnacha · Shiraz",
+      "wine4.eyebrow": "Cuarto vino · El rosado de verano perfecto",
+      "wine4.subtitle": "Cinsault 48% · Garnacha 43% · Shiraz 9%",
+      "wine4.impression": "Un rosado delicado, refrescante y seco con color coral pálido. Notas de manzana y melocotón amarillo se combinan con mineralidad refinada y pureza de fruta. La acidez integrada juega con la dulzura de los componentes frutales para dar un vino equilibrado, perfectamente pesado. <em>Un final largo y persistente que invita a más</em> — el rosado natural para servicio de día, terraza y clima cálido.",
+      "wine4.colour": "Coral pálido · Luminoso",
+      "wine4.profile": "Manzana · Melocotón amarillo · Mineral",
+      "wine4.pairing": "Servicio de día · Terraza · Cocina ligera",
+      "wine4.position": "El rosado signature del clima cálido: equilibrado, sin peso, luminoso. Fuerte rotación y amplio atractivo de cliente sin comprometer la finura.",
+      "wine5.badge": "Blanco · Sauvignon Blanc · Ligeramente roble",
+      "wine5.eyebrow": "Quinto vino · Precisión mineral",
+      "wine5.subtitle": "100% Sauvignon Blanc · Ligeramente roble · De terruño",
+      "wine5.impression": "Un Sauvignon Blanc único, reflejo del sitio y del suelo. Viñedos de 16 años orientados al sur a 175m sobre el nivel del mar, en suelos profundos Hutton y Clovelly. Ligeramente envejecido en roble, muestra mineralidad con ácidos naturales bien equilibrados — combina notas herbáceas con fruta tropical integrada: ralladura de lima, manzana verde y piña. <em>Una frescura elegante con un final largo y crujiente</em> — perfecto con ostras frescas, pescado a la parrilla, platos de inspiración asiática y sushi.",
+      "wine5.site": "175m altitud · Suelos Hutton y Clovelly",
+      "wine5.profile": "Ralladura de lima · Manzana verde · Piña",
+      "wine5.pairing": "Ostras · Pescado a la parrilla · Sushi · Asiático",
+      "wine5.position": "Un blanco preciso, de terruño, con final cristalino — para raw bar, servicio de sushi y los momentos donde la elegancia se mide por la claridad.",
+      "incentives.tag": "Incentivos y flexibilidad",
+      "incentives.title": "Sin estructuras cerradas",
+      "incentives.sub": "Primero identificamos qué vinos y marcas son de interés real. Desde ahí, el marco comercial se construye en conjunto.",
+      "incentives.c1.title": "Cashback para personal de sala",
+      "incentives.c1.text": "2,5% de cashback para el personal de servicio basado en el precio de carta — un mecanismo directo y motivador que alinea al equipo de sala con los vinos recomendados.",
+      "incentives.c2.title": "Rebates a nivel del local",
+      "incentives.c2.text": "Rebates por ventas estructurados sobre rendimiento real — un mecanismo transparente que crece en valor a medida que crece la alianza.",
+      "incentives.c3.title": "Premios experienciales",
+      "incentives.c3.text": "Catas privadas, formación profesional en vino, premios experienciales y cajas de vino curadas — pensados para quienes sostienen el programa cada día.",
+      "incentives.c4.title": "Una conversación abierta",
+      "incentives.c4.text": "No hay estructuras cerradas. Cada marco — comercial, operativo, creativo — se moldea para encajar en el local, nunca se le impone.",
+      "horizon.tag": "Un horizonte compartido",
+      "horizon.title": "Construido juntos, no impuesto",
+      "horizon.sub": "Los programas de vino más sólidos crecen por etapas. Así vemos el nuestro desplegarse con vosotros.",
+      "horizon.s1.stage": "Corto plazo",
+      "horizon.s1.title": "Introducir",
+      "horizon.s1.text": "Establecer una presencia de vino coherente y refinada que se integre con naturalidad en la experiencia del local — sin interrumpir ritmo ni servicio existentes.",
+      "horizon.s2.stage": "Medio plazo",
+      "horizon.s2.title": "Consolidar",
+      "horizon.s2.text": "Optimizar rotación, refinar la selección y ajustar estrategia sobre rendimiento real y respuesta de cliente — juntos, con datos transparentes.",
+      "horizon.s3.stage": "Largo plazo",
+      "horizon.s3.title": "Construir y crecer",
+      "horizon.s3.text": "Una alianza de vino estable, proyectos especiales, asignaciones exclusivas — y una relación construida sobre confianza, estándares y ambición compartidos.",
+      "closing.eyebrow": "Reflexión final",
+      "closing.quote": "Una gran selección no solo eleva la carta.<br>Eleva la <em>memoria,</em> la conversación<br>y la percepción del lugar.",
+      "closing.sig": "Esta no es una propuesta cerrada — es una conversación abierta.",
+      "closing.contact": "Para iniciar la conversación",
+      "footer.tag": "Hecho con respeto por la mesa, el equipo y el cliente."
+    }
+  };
+
+  // ── LANGUAGE SWITCHER LOGIC ──
+  function setLanguage(lang) {
+    document.documentElement.lang = lang;
+    const dict = translations[lang] || translations.en;
+    document.querySelectorAll("[data-i18n]").forEach(function(el) {
+      const key = el.getAttribute("data-i18n");
+      if (dict[key] !== undefined) {
+        el.innerHTML = dict[key];
+      }
+    });
+    document.querySelectorAll(".lang-btn").forEach(function(btn) {
+      btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    });
+  }
+
+  document.querySelectorAll(".lang-btn").forEach(function(btn) {
+    btn.addEventListener("click", function() {
+      setLanguage(btn.getAttribute("data-lang"));
+    });
+  });
+
+  // ── SCROLL PROGRESS ──
+  window.addEventListener("scroll", function() {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    document.getElementById("scrollProgress").style.width = pct + "%";
+  });
+
+  // ── REVEAL ON SCROLL ──
+  const revealEls = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+
+  revealEls.forEach(function(el) { observer.observe(el); });
+
+  // ── PARALLAX ──
+  window.addEventListener("scroll", function() {
+    const imgs = document.querySelectorAll(".parallax-img");
+    imgs.forEach(function(img) {
+      const rect = img.parentElement.getBoundingClientRect();
+      img.style.transform = "translateY(" + (rect.top * 0.12) + "px)";
+    });
+  });
+})();
+</script>
+</body>
+</html>
