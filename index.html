@@ -232,12 +232,29 @@ body::after {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── PARTNERS BAR ── */
+/* ── PARTNERS BLOCK (TEXT EDITORIAL) ── */
 .partners {
   background: var(--ink);
-  padding: 70px 40px 80px;
+  padding: 130px 40px;
   text-align: center;
   border-top: 1px solid rgba(201,169,110,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.partners::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(184,150,90,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.partners-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .partners-eyebrow {
@@ -245,46 +262,48 @@ body::after {
   letter-spacing: 8px;
   text-transform: uppercase;
   color: var(--gold-muted);
-  margin-bottom: 50px;
+  margin-bottom: 38px;
   font-weight: 400;
 }
 
-.partners-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
-  flex-wrap: wrap;
-  max-width: 1100px;
-  margin: 0 auto;
+.partners-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4.8vw, 54px);
+  line-height: 1.2;
+  color: var(--cream);
+  letter-spacing: -1.2px;
+  margin-bottom: 36px;
 }
 
-.partner-logo {
-  height: 90px;
-  width: auto;
-  max-width: 180px;
-  object-fit: contain;
-  opacity: 0.85;
-  filter: brightness(1.05);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.partners-headline em {
+  font-style: italic;
+  color: var(--gold);
 }
 
-.partner-logo:hover {
-  opacity: 1;
-  transform: translateY(-3px);
+.partners-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold-muted);
+  margin: 0 auto 36px;
+  opacity: 0.5;
 }
 
-.partners-note {
-  margin-top: 50px;
+.partners-body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 17px;
+  font-size: clamp(18px, 2.1vw, 22px);
+  line-height: 1.7;
   color: var(--stone);
-  letter-spacing: 0.5px;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  max-width: 720px;
+  margin: 0 auto;
+  letter-spacing: 0.3px;
+}
+
+.partners-body em {
+  font-style: italic;
+  color: var(--gold-muted);
+  font-weight: 400;
 }
 
 /* ── PHOTO BREAKS ── */
@@ -1185,25 +1204,6 @@ body::after {
   border-top: 1px solid rgba(201,169,110,0.1);
 }
 
-.footer-partners {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-  margin-bottom: 36px;
-}
-
-.footer-partners img {
-  height: 38px;
-  width: auto;
-  opacity: 0.45;
-  filter: brightness(1.1);
-  transition: opacity 0.3s;
-}
-
-.footer-partners img:hover { opacity: 0.75; }
-
 .footer p {
   font-size: 10px;
   letter-spacing: 5px;
@@ -1259,10 +1259,7 @@ body::after {
   .cover-bg img:nth-child(2) { display: none; }
   .photo-full { height: 50vh; }
   .photo-full-text { left: 32px; right: 32px; bottom: 40px; }
-  .partners-row { gap: 50px; }
-  .partner-logo { height: 70px; }
-  .footer-partners { gap: 36px; }
-  .footer-partners img { height: 30px; }
+  .partners { padding: 90px 32px; }
   .lang-switcher { top: 12px; right: 12px; padding: 4px; }
   .lang-btn { padding: 6px 8px; font-size: 9px; letter-spacing: 1px; }
 }
@@ -1316,15 +1313,14 @@ body::after {
   </div>
 </section>
 
-<!-- ══════ PARTNERS BAR ══════ -->
+<!-- ══════ PARTNERS BLOCK (TEXT EDITORIAL) ══════ -->
 <section class="partners">
-  <div class="partners-eyebrow" data-i18n="partners.eyebrow">In collaboration with</div>
-  <div class="partners-row">
-    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/3_koxbe4.png" alt="Bodega de los Reyes">
-    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/1_iv5l2i.png" alt="Nikki Beach Mallorca">
-    <img class="partner-logo" src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/2_uc1ber.png" alt="Gran Folies">
+  <div class="partners-inner">
+    <div class="partners-eyebrow" data-i18n="partners.eyebrow">A Quiet Network of Trust</div>
+    <h2 class="partners-headline" data-i18n="partners.headline">Already pouring at some of the <em>finest beach clubs in Europe</em></h2>
+    <div class="partners-divider"></div>
+    <p class="partners-body" data-i18n="partners.body">From the Balearics to the Côte d'Azur, from the Aegean to the Adriatic — these wines are already on the table at venues that set the tone for contemporary coastal luxury. <em>Quietly, by invitation, and with intention.</em> A reference circle built on shared standards rather than distribution, where each addition is chosen as carefully as the wine itself.</p>
   </div>
-  <p class="partners-note" data-i18n="partners.note">Our first year expanding this curated selection across Europe — placing these wines in environments where they will be properly understood, served, and valued.</p>
 </section>
 
 <!-- ══════ MANIFESTO ══════ -->
@@ -1644,11 +1640,6 @@ body::after {
 
 <!-- ══════ FOOTER ══════ -->
 <div class="footer">
-  <div class="footer-partners">
-    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/3_koxbe4.png" alt="Bodega de los Reyes">
-    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/1_iv5l2i.png" alt="Nikki Beach Mallorca">
-    <img src="https://res.cloudinary.com/dxhef6dju/image/upload/v1776699590/2_uc1ber.png" alt="Gran Folies">
-  </div>
   <p>Wine Partnership Proposal · 2026</p>
   <p class="footer-tag" data-i18n="footer.tag">Crafted with respect for the table, the team and the guest.</p>
 </div>
@@ -1666,8 +1657,9 @@ body::after {
       "cover.meta.1": "Crafted Selection",
       "cover.meta.2": "International Origins",
       "cover.scroll": "Discover",
-      "partners.eyebrow": "In collaboration with",
-      "partners.note": "Our first year expanding this curated selection across Europe — placing these wines in environments where they will be properly understood, served, and valued.",
+      "partners.eyebrow": "A Quiet Network of Trust",
+      "partners.headline": "Already pouring at some of the <em>finest beach clubs in Europe</em>",
+      "partners.body": "From the Balearics to the Côte d'Azur, from the Aegean to the Adriatic — these wines are already on the table at venues that set the tone for contemporary coastal luxury. <em>Quietly, by invitation, and with intention.</em> A reference circle built on shared standards rather than distribution, where each addition is chosen as carefully as the wine itself.",
       "manifesto.tag": "Our Approach",
       "manifesto.headline": "Wine is not an accessory.<br>It is <em>atmosphere.</em><br>It is <em>memory.</em><br>It is <em>brand language.</em>",
       "manifesto.strike": "This proposal is not about becoming another supplier.",
@@ -1710,9 +1702,6 @@ body::after {
       "wine.s.pairing": "Pairing",
       "wine.s.character": "Character",
       "wine.s.role": "Role",
-      "wine.s.colour": "Colour",
-      "wine.s.variety": "Variety",
-      "wine.s.site": "Site",
       "wine.t.acidity": "ACIDITY",
       "wine.t.harvest": "HARVEST",
       "wine.t.bottles": "BOTTLES",
@@ -1740,22 +1729,6 @@ body::after {
       "wine3.role": "Collection bottle · Conversation · Prestige",
       "wine3.position": "Rare, international, memorable. Its greatness lies in turning distinct terroirs and noble varieties into one coherent, serious bottle of extraordinary presence.",
       "photo4.text": "A wine conceived as international narrative, collection and conversation.",
-      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
-      "wine4.eyebrow": "Fourth Wine · The Perfect Summer Rosé",
-      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
-      "wine4.impression": "A delicate, refreshing and dry rosé with a pale coral colour. Undertones of apple and yellow peach combine with refined minerality and pure fruit. Integrated acidity plays against the sweetness of the fruit components to give a balanced, perfectly weighted wine. <em>A long lingering finish that leaves you wanting more</em> — the natural rosé for daytime, terrace and warm-weather service.",
-      "wine4.colour": "Pale coral · Luminous",
-      "wine4.profile": "Apple · Yellow peach · Mineral",
-      "wine4.pairing": "Daytime · Terrace · Light cuisine",
-      "wine4.position": "The signature rosé of warm weather: balanced, weightless, luminous. Strong rotation and broad guest appeal without compromising refinement.",
-      "wine5.badge": "White · Sauvignon Blanc · Lightly Oaked",
-      "wine5.eyebrow": "Fifth Wine · Mineral Precision",
-      "wine5.subtitle": "100% Sauvignon Blanc · Lightly oaked · Site-driven",
-      "wine5.impression": "A unique Sauvignon Blanc, a reflection of site and soil. South-facing 16-year-old vineyards sitting 175m above sea level, on deep Hutton and Clovelly soils. Lightly oaked, displaying minerality with well-balanced natural acids — combining herbaceous notes with integrated tropical fruit: lime zest, green apple and pineapple. <em>An elegant freshness with a long, crisp finish</em> — perfect with fresh oysters, grilled fish, Asian-inspired dishes and sushi.",
-      "wine5.site": "175m altitude · Hutton & Clovelly soils",
-      "wine5.profile": "Lime zest · Green apple · Pineapple",
-      "wine5.pairing": "Oysters · Grilled fish · Sushi · Asian",
-      "wine5.position": "A precise, site-driven white with crystalline finish — for raw bar, sushi service and the moments where elegance is measured by clarity.",
       "incentives.tag": "Incentives & Flexibility",
       "incentives.title": "No fixed structures",
       "incentives.sub": "First we identify which wines and brands are of real interest. From there, the commercial framework is built together.",
@@ -1792,8 +1765,9 @@ body::after {
       "cover.meta.1": "Kuratierte Auswahl",
       "cover.meta.2": "Internationale Herkunft",
       "cover.scroll": "Entdecken",
-      "partners.eyebrow": "In Zusammenarbeit mit",
-      "partners.note": "Unser erstes Jahr, in dem wir diese kuratierte Auswahl in Europa erweitern — diese Weine in Umgebungen platzieren, in denen sie verstanden, serviert und geschätzt werden.",
+      "partners.eyebrow": "Ein stilles Netzwerk des Vertrauens",
+      "partners.headline": "Bereits ausgeschenkt in einigen der <em>besten Beach Clubs Europas</em>",
+      "partners.body": "Von den Balearen bis zur Côte d'Azur, von der Ägäis bis zur Adria — diese Weine stehen bereits auf den Tischen jener Häuser, die den Ton für zeitgenössischen Küstenluxus angeben. <em>Leise, auf Einladung und mit Absicht.</em> Ein Referenzkreis, der auf gemeinsamen Standards aufgebaut ist und nicht auf Vertrieb — wo jede Aufnahme so sorgfältig gewählt wird wie der Wein selbst.",
       "manifesto.tag": "Unser Ansatz",
       "manifesto.headline": "Wein ist kein Accessoire.<br>Er ist <em>Atmosphäre.</em><br>Er ist <em>Erinnerung.</em><br>Er ist <em>Markensprache.</em>",
       "manifesto.strike": "Dieses Angebot will nicht ein weiterer Lieferant werden.",
@@ -1836,9 +1810,6 @@ body::after {
       "wine.s.pairing": "Begleitung",
       "wine.s.character": "Charakter",
       "wine.s.role": "Rolle",
-      "wine.s.colour": "Farbe",
-      "wine.s.variety": "Rebsorte",
-      "wine.s.site": "Lage",
       "wine.t.acidity": "SÄURE",
       "wine.t.harvest": "ERTRAG",
       "wine.t.bottles": "FLASCHEN",
@@ -1866,22 +1837,6 @@ body::after {
       "wine3.role": "Sammlerflasche · Gespräch · Prestige",
       "wine3.position": "Selten, international, unvergesslich. Seine Größe liegt darin, unterschiedliche Terroirs und edle Sorten in eine kohärente, ernsthafte Flasche von außergewöhnlicher Präsenz zu verwandeln.",
       "photo4.text": "Ein Wein, konzipiert als internationale Erzählung, Sammlung und Gespräch.",
-      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
-      "wine4.eyebrow": "Vierter Wein · Der perfekte Sommerrosé",
-      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
-      "wine4.impression": "Ein zarter, erfrischender und trockener Rosé mit blassem Korallton. Untertöne von Apfel und gelbem Pfirsich verbinden sich mit verfeinerter Mineralität und reiner Frucht. Integrierte Säure spielt gegen die Süße der Fruchtkomponenten und ergibt einen ausgewogenen, perfekt gewichteten Wein. <em>Ein langer, anhaltender Abgang, der mehr verlangen lässt</em> — der natürliche Rosé für Tagesservice, Terrasse und warmes Wetter.",
-      "wine4.colour": "Blasses Korall · Leuchtend",
-      "wine4.profile": "Apfel · Gelber Pfirsich · Mineralisch",
-      "wine4.pairing": "Tagesservice · Terrasse · Leichte Küche",
-      "wine4.position": "Der Signature-Rosé für warmes Wetter: ausgewogen, schwerelos, leuchtend. Starke Rotation und breite Gästeresonanz, ohne Verfeinerung zu opfern.",
-      "wine5.badge": "Weißwein · Sauvignon Blanc · Leicht im Holz",
-      "wine5.eyebrow": "Fünfter Wein · Mineralische Präzision",
-      "wine5.subtitle": "100% Sauvignon Blanc · Leicht im Holz · Lagengeprägt",
-      "wine5.impression": "Ein einzigartiger Sauvignon Blanc, ein Spiegel von Lage und Boden. Südexponierte 16 Jahre alte Reben auf 175m über dem Meer, auf tiefen Hutton- und Clovelly-Böden. Leicht im Holz ausgebaut, zeigt Mineralität mit gut ausbalancierten natürlichen Säuren — verbindet kräuterige Noten mit integrierter tropischer Frucht: Limettenschale, grüner Apfel und Ananas. <em>Eine elegante Frische mit langem, knackigem Abgang</em> — perfekt zu frischen Austern, gegrilltem Fisch, asiatisch inspirierten Gerichten und Sushi.",
-      "wine5.site": "175m Höhe · Hutton- & Clovelly-Böden",
-      "wine5.profile": "Limettenschale · Grüner Apfel · Ananas",
-      "wine5.pairing": "Austern · Gegrillter Fisch · Sushi · Asiatisch",
-      "wine5.position": "Ein präziser, lagengeprägter Weißwein mit kristallinem Abgang — für Raw Bar, Sushi-Service und Momente, in denen Eleganz an Klarheit gemessen wird.",
       "incentives.tag": "Anreize & Flexibilität",
       "incentives.title": "Keine starren Strukturen",
       "incentives.sub": "Zuerst identifizieren wir, welche Weine und Marken von echtem Interesse sind. Von dort wird der kommerzielle Rahmen gemeinsam aufgebaut.",
@@ -1918,8 +1873,9 @@ body::after {
       "cover.meta.1": "Sélection signée",
       "cover.meta.2": "Origines internationales",
       "cover.scroll": "Découvrir",
-      "partners.eyebrow": "En collaboration avec",
-      "partners.note": "Notre première année à étendre cette sélection en Europe — placer ces vins dans des environnements où ils seront compris, servis et appréciés à leur juste valeur.",
+      "partners.eyebrow": "Un cercle discret de confiance",
+      "partners.headline": "Déjà servis dans certains des <em>plus beaux beach clubs d'Europe</em>",
+      "partners.body": "Des Baléares à la Côte d'Azur, de la mer Égée à l'Adriatique — ces vins sont déjà à table dans les adresses qui donnent le ton du luxe côtier contemporain. <em>Discrètement, sur invitation, avec intention.</em> Un cercle de référence bâti sur des standards partagés plutôt que sur la distribution — où chaque entrée est choisie avec autant de soin que le vin lui-même.",
       "manifesto.tag": "Notre Approche",
       "manifesto.headline": "Le vin n'est pas un accessoire.<br>Il est <em>atmosphère.</em><br>Il est <em>mémoire.</em><br>Il est <em>langage de marque.</em>",
       "manifesto.strike": "Cette proposition n'est pas celle d'un fournisseur de plus.",
@@ -1962,9 +1918,6 @@ body::after {
       "wine.s.pairing": "Accord",
       "wine.s.character": "Caractère",
       "wine.s.role": "Rôle",
-      "wine.s.colour": "Couleur",
-      "wine.s.variety": "Cépage",
-      "wine.s.site": "Site",
       "wine.t.acidity": "ACIDITÉ",
       "wine.t.harvest": "RENDEMENT",
       "wine.t.bottles": "BOUTEILLES",
@@ -1992,22 +1945,6 @@ body::after {
       "wine3.role": "Bouteille de collection · Conversation · Prestige",
       "wine3.position": "Rare, international, mémorable. Sa grandeur réside dans la transformation de terroirs distincts et de cépages nobles en une seule bouteille cohérente, sérieuse, à la présence extraordinaire.",
       "photo4.text": "Un vin conçu comme récit international, collection et conversation.",
-      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
-      "wine4.eyebrow": "Quatrième vin · Le rosé d'été parfait",
-      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
-      "wine4.impression": "Un rosé délicat, rafraîchissant et sec, à la robe corail pâle. Notes d'évolution de pomme et pêche jaune se combinent à une minéralité raffinée et une pureté de fruit. L'acidité intégrée joue avec la douceur des composantes fruitées pour offrir un vin équilibré, parfaitement pondéré. <em>Une finale longue et persistante qui en redemande</em> — le rosé naturel pour le service de jour, terrasse et beaux jours.",
-      "wine4.colour": "Corail pâle · Lumineux",
-      "wine4.profile": "Pomme · Pêche jaune · Minéral",
-      "wine4.pairing": "Service de jour · Terrasse · Cuisine légère",
-      "wine4.position": "Le rosé signature des beaux jours : équilibré, sans poids, lumineux. Forte rotation et large adhésion sans compromettre la finesse.",
-      "wine5.badge": "Blanc · Sauvignon Blanc · Légèrement boisé",
-      "wine5.eyebrow": "Cinquième vin · Précision minérale",
-      "wine5.subtitle": "100% Sauvignon Blanc · Légèrement boisé · Issu du terroir",
-      "wine5.impression": "Un Sauvignon Blanc unique, reflet du site et du sol. Vignes de 16 ans exposées sud à 175m d'altitude, sur des sols profonds Hutton et Clovelly. Légèrement boisé, il déploie une minéralité avec des acides naturels bien équilibrés — combinant des notes herbacées avec un fruit tropical intégré : zeste de citron vert, pomme verte et ananas. <em>Une fraîcheur élégante avec une finale longue et nette</em> — parfait avec huîtres fraîches, poisson grillé, plats d'inspiration asiatique et sushi.",
-      "wine5.site": "175m d'altitude · Sols Hutton & Clovelly",
-      "wine5.profile": "Zeste de citron vert · Pomme verte · Ananas",
-      "wine5.pairing": "Huîtres · Poisson grillé · Sushi · Asiatique",
-      "wine5.position": "Un blanc précis, issu du terroir, à la finale cristalline — pour le bar à crus, le service sushi et les moments où l'élégance se mesure à la clarté.",
       "incentives.tag": "Incitations & Flexibilité",
       "incentives.title": "Aucune structure figée",
       "incentives.sub": "Nous identifions d'abord quels vins et marques suscitent un réel intérêt. À partir de là, le cadre commercial se construit ensemble.",
@@ -2044,8 +1981,9 @@ body::after {
       "cover.meta.1": "Selezione curata",
       "cover.meta.2": "Origini internazionali",
       "cover.scroll": "Scoprire",
-      "partners.eyebrow": "In collaborazione con",
-      "partners.note": "Il nostro primo anno per estendere questa selezione curata in Europa — collocare questi vini in ambienti dove saranno compresi, serviti e apprezzati.",
+      "partners.eyebrow": "Una rete silenziosa di fiducia",
+      "partners.headline": "Già serviti in alcuni dei <em>migliori beach club d'Europa</em>",
+      "partners.body": "Dalle Baleari alla Costa Azzurra, dall'Egeo all'Adriatico — questi vini sono già sul tavolo nei locali che dettano il tono del lusso costiero contemporaneo. <em>In silenzio, su invito e con intenzione.</em> Un cerchio di riferimento costruito su standard condivisi più che sulla distribuzione, dove ogni inserimento è scelto con la stessa cura del vino stesso.",
       "manifesto.tag": "Il nostro approccio",
       "manifesto.headline": "Il vino non è un accessorio.<br>È <em>atmosfera.</em><br>È <em>memoria.</em><br>È <em>linguaggio di marca.</em>",
       "manifesto.strike": "Questa proposta non riguarda diventare un altro fornitore.",
@@ -2088,9 +2026,6 @@ body::after {
       "wine.s.pairing": "Abbinamento",
       "wine.s.character": "Carattere",
       "wine.s.role": "Ruolo",
-      "wine.s.colour": "Colore",
-      "wine.s.variety": "Varietà",
-      "wine.s.site": "Sito",
       "wine.t.acidity": "ACIDITÀ",
       "wine.t.harvest": "RESA",
       "wine.t.bottles": "BOTTIGLIE",
@@ -2118,22 +2053,6 @@ body::after {
       "wine3.role": "Bottiglia da collezione · Conversazione · Prestigio",
       "wine3.position": "Raro, internazionale, memorabile. La sua grandezza sta nel trasformare terroir distinti e varietà nobili in una sola bottiglia coerente, seria, di presenza straordinaria.",
       "photo4.text": "Un vino concepito come narrativa internazionale, collezione e conversazione.",
-      "wine4.badge": "Rosé · Cinsault · Grenache · Shiraz",
-      "wine4.eyebrow": "Quarto vino · Il rosé estivo perfetto",
-      "wine4.subtitle": "Cinsault 48% · Grenache 43% · Shiraz 9%",
-      "wine4.impression": "Un rosé delicato, rinfrescante e secco dal colore corallo pallido. Sottoftoni di mela e pesca gialla si combinano con minerality raffinata e purezza di frutto. L'acidità integrata gioca con la dolcezza delle componenti fruttate per dare un vino equilibrato, perfettamente pesato. <em>Un finale lungo e persistente che fa desiderare ancora</em> — il rosé naturale per servizio diurno, terrazza e clima caldo.",
-      "wine4.colour": "Corallo pallido · Luminoso",
-      "wine4.profile": "Mela · Pesca gialla · Minerale",
-      "wine4.pairing": "Servizio diurno · Terrazza · Cucina leggera",
-      "wine4.position": "Il rosé signature per il clima caldo: equilibrato, leggero, luminoso. Forte rotazione e ampio appeal senza compromettere la finezza.",
-      "wine5.badge": "Bianco · Sauvignon Blanc · Leggermente in legno",
-      "wine5.eyebrow": "Quinto vino · Precisione minerale",
-      "wine5.subtitle": "100% Sauvignon Blanc · Leggermente in legno · Sito-driven",
-      "wine5.impression": "Un Sauvignon Blanc unico, riflesso di sito e suolo. Vigneti di 16 anni esposti a sud a 175m sul livello del mare, su suoli profondi Hutton e Clovelly. Leggermente affinato in legno, mostra mineralità con acidi naturali ben bilanciati — combina note erbacee con frutta tropicale integrata: scorza di lime, mela verde e ananas. <em>Una freschezza elegante con un finale lungo e nitido</em> — perfetto con ostriche fresche, pesce alla griglia, piatti di ispirazione asiatica e sushi.",
-      "wine5.site": "175m altitudine · Suoli Hutton e Clovelly",
-      "wine5.profile": "Scorza di lime · Mela verde · Ananas",
-      "wine5.pairing": "Ostriche · Pesce alla griglia · Sushi · Asiatico",
-      "wine5.position": "Un bianco preciso, sito-driven con finale cristallino — per raw bar, servizio sushi e i momenti in cui l'eleganza si misura in chiarezza.",
       "incentives.tag": "Incentivi e flessibilità",
       "incentives.title": "Nessuna struttura fissa",
       "incentives.sub": "Prima identifichiamo quali vini e marchi sono di reale interesse. Da lì, il quadro commerciale si costruisce insieme.",
@@ -2170,8 +2089,9 @@ body::after {
       "cover.meta.1": "Selección curada",
       "cover.meta.2": "Orígenes internacionales",
       "cover.scroll": "Descubrir",
-      "partners.eyebrow": "En colaboración con",
-      "partners.note": "Nuestro primer año expandiendo esta selección curada por Europa — situando estos vinos en entornos donde serán comprendidos, servidos y valorados como merecen.",
+      "partners.eyebrow": "Un círculo discreto de confianza",
+      "partners.headline": "Ya servidos en algunos de los <em>mejores beach clubs de Europa</em>",
+      "partners.body": "Desde Baleares hasta la Costa Azul, desde el Egeo hasta el Adriático — estos vinos ya están en mesa en los locales que marcan el tono del lujo costero contemporáneo. <em>En silencio, por invitación y con intención.</em> Un círculo de referencia construido sobre estándares compartidos, no sobre distribución — donde cada incorporación se elige con el mismo cuidado que el propio vino.",
       "manifesto.tag": "Nuestro enfoque",
       "manifesto.headline": "El vino no es un accesorio.<br>Es <em>atmósfera.</em><br>Es <em>memoria.</em><br>Es <em>lenguaje de marca.</em>",
       "manifesto.strike": "Esta propuesta no se trata de convertirnos en otro proveedor.",
@@ -2214,9 +2134,6 @@ body::after {
       "wine.s.pairing": "Maridaje",
       "wine.s.character": "Carácter",
       "wine.s.role": "Rol",
-      "wine.s.colour": "Color",
-      "wine.s.variety": "Variedad",
-      "wine.s.site": "Sitio",
       "wine.t.acidity": "ACIDEZ",
       "wine.t.harvest": "RENDIMIENTO",
       "wine.t.bottles": "BOTELLAS",
@@ -2244,22 +2161,6 @@ body::after {
       "wine3.role": "Botella de colección · Conversación · Prestigio",
       "wine3.position": "Raro, internacional, memorable. Su grandeza está en convertir terroirs distintos y variedades nobles en una sola botella coherente, seria, de presencia extraordinaria.",
       "photo4.text": "Un vino concebido como relato internacional, colección y conversación.",
-      "wine4.badge": "Rosado · Cinsault · Garnacha · Shiraz",
-      "wine4.eyebrow": "Cuarto vino · El rosado de verano perfecto",
-      "wine4.subtitle": "Cinsault 48% · Garnacha 43% · Shiraz 9%",
-      "wine4.impression": "Un rosado delicado, refrescante y seco con color coral pálido. Notas de manzana y melocotón amarillo se combinan con mineralidad refinada y pureza de fruta. La acidez integrada juega con la dulzura de los componentes frutales para dar un vino equilibrado, perfectamente pesado. <em>Un final largo y persistente que invita a más</em> — el rosado natural para servicio de día, terraza y clima cálido.",
-      "wine4.colour": "Coral pálido · Luminoso",
-      "wine4.profile": "Manzana · Melocotón amarillo · Mineral",
-      "wine4.pairing": "Servicio de día · Terraza · Cocina ligera",
-      "wine4.position": "El rosado signature del clima cálido: equilibrado, sin peso, luminoso. Fuerte rotación y amplio atractivo de cliente sin comprometer la finura.",
-      "wine5.badge": "Blanco · Sauvignon Blanc · Ligeramente roble",
-      "wine5.eyebrow": "Quinto vino · Precisión mineral",
-      "wine5.subtitle": "100% Sauvignon Blanc · Ligeramente roble · De terruño",
-      "wine5.impression": "Un Sauvignon Blanc único, reflejo del sitio y del suelo. Viñedos de 16 años orientados al sur a 175m sobre el nivel del mar, en suelos profundos Hutton y Clovelly. Ligeramente envejecido en roble, muestra mineralidad con ácidos naturales bien equilibrados — combina notas herbáceas con fruta tropical integrada: ralladura de lima, manzana verde y piña. <em>Una frescura elegante con un final largo y crujiente</em> — perfecto con ostras frescas, pescado a la parrilla, platos de inspiración asiática y sushi.",
-      "wine5.site": "175m altitud · Suelos Hutton y Clovelly",
-      "wine5.profile": "Ralladura de lima · Manzana verde · Piña",
-      "wine5.pairing": "Ostras · Pescado a la parrilla · Sushi · Asiático",
-      "wine5.position": "Un blanco preciso, de terruño, con final cristalino — para raw bar, servicio de sushi y los momentos donde la elegancia se mide por la claridad.",
       "incentives.tag": "Incentivos y flexibilidad",
       "incentives.title": "Sin estructuras cerradas",
       "incentives.sub": "Primero identificamos qué vinos y marcas son de interés real. Desde ahí, el marco comercial se construye en conjunto.",
